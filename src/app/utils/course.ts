@@ -1,8 +1,7 @@
 interface Course {
     duration: number;
-    name: string;
+    title: string;
     createdDate: Date;
-
-    save(params:Course): Course;
-    delete(): void;
+    description: string;
+    id: number;
 }
