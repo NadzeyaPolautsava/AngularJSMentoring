@@ -1,11 +1,11 @@
 import {Component} from '@angular/core'
 
 @Component({
-  selector: 'my-header',
+  selector: 'logo',
   providers: [],
-  template: 'header'
+  templateUrl: './logo.html'
 })
-export class HeaderComponent {
+export class LogoComponent {
   constructor() {
   }
 }

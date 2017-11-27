@@ -1,9 +1,9 @@
-import {Component} from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'my-header',
   providers: [],
-  template: 'header'
+  template: 'lalalalla'
 })
 export class HeaderComponent {
   constructor() {
