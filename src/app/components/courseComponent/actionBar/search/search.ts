@@ -7,6 +7,11 @@ import {Component} from '@angular/core'
   styleUrls: []
 })
 export class SearchComponent {
+
   constructor() {
+  }
+
+  findCourse(userQuery: string) {
+    console.log(userQuery);
   }
 }
