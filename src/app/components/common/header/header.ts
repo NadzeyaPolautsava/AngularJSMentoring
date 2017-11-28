@@ -1,11 +1,10 @@
 import { Component } from '@angular/core'
+import { LogoComponent } from './logo/logo'
 
 @Component({
-  selector: 'my-header',
-  providers: [],
-  template: 'lalalalla'
+  selector: 'app-header',
+  templateUrl: './header.html'
 })
 export class HeaderComponent {
-  constructor() {
-  }
+  constructor() {}
 }

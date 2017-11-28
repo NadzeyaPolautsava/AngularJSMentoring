@@ -30,6 +30,15 @@ import { HomeComponent } from './components/home';
 import { NoContentComponent } from './components/no-content';
 import { XLargeDirective } from './components/home/x-large';
 import { LogoComponent } from './components/common/header/logo';
+import { MenuComponent } from './components/common/header/menu';
+import { LoginComponent } from './components/common/header/login';
+import { HeaderComponent } from './components/common/header';
+import { FooterComponent } from './components/common/footer';
+import { CourseComponent } from './components/courseComponent/courseList/course';
+import { CourseListComponent } from './components/courseComponent/courseList';
+import { ActionBarComponent } from './components/courseComponent/actionBar';
+import { AddCourseComponent } from './components/courseComponent/actionBar/addCourse';
+import { SearchComponent } from './components/courseComponent/actionBar/search';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -55,8 +64,18 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective, 
-    LogoComponent
+    XLargeDirective,
+    LogoComponent, 
+    MenuComponent, 
+    LoginComponent, 
+    HeaderComponent, 
+    FooterComponent, 
+    CourseComponent, 
+    CourseListComponent, 
+    ActionBarComponent, 
+    AddCourseComponent, 
+    SearchComponent
+    
   ],
   /**
    * Import Angular's modules.
