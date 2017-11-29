@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Item } from './../../../classes/item'
 
 @Component({
@@ -7,14 +7,18 @@ import { Item } from './../../../classes/item'
   templateUrl: './courseList.html', 
   styleUrls: []
 })
-export class CourseListComponent {
+export class CourseListComponent implements OnInit {
 
-  public courses: Item[] = [
-    { id: 1, duration: 100, title: 'Some Video', createdDate: new Date(), description: 'description'}, 
-    { id: 2, duration: 200, title: 'Some Video2', createdDate: new Date(), description: 'description2'}, 
-  ];
+  public courses: Item[];
 
   constructor() {
+  }
+
+  ngOnInit() {
+    this.courses = [
+      { id: 1, duration: 100, title: 'Some Video', createdDate: new Date(), description: 'description'}, 
+      { id: 2, duration: 200, title: 'Some Video2', createdDate: new Date(), description: 'description2'}, 
+    ];
   }
 
   deleteItem($event) {

@@ -5,7 +5,7 @@ import { Item } from './../../../../classes/item'
   selector: 'course',
   providers: [],
   templateUrl: './course.html', 
-  styleUrls: []
+  styleUrls: ['./course.css']
 })
 export class CourseComponent {
   @Input('init') course : Item = {
