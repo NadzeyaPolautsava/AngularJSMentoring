@@ -1,6 +1,6 @@
 import { Course } from './../interfaces/course';
 
-class Item implements Course {
+export class Item implements Course {
     duration: number;
     title: string;
     createdDate: Date;
