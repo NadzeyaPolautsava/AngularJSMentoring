@@ -1,1 +1,7 @@
-<course [init]="course" (delete)="deleteItem($event);"></course>
+<div>
+    <ul>
+        <li *ngFor="let c of courses">
+                <course [init]="c" (delete)="deleteItem($event);"></course>
+        </li>
+    </ul>
+</div>

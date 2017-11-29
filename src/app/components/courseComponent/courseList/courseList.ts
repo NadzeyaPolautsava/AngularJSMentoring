@@ -9,13 +9,10 @@ import { Item } from './../../../classes/item'
 })
 export class CourseListComponent {
 
-  public course: Item = {
-    duration: 100,
-    title: 'Some Video', 
-    createdDate: new Date(), 
-    description: 'description',
-    id: 1
-  };
+  public courses: Item[] = [
+    { id: 1, duration: 100, title: 'Some Video', createdDate: new Date(), description: 'description'}, 
+    { id: 2, duration: 200, title: 'Some Video2', createdDate: new Date(), description: 'description2'}, 
+  ];
 
   constructor() {
   }
