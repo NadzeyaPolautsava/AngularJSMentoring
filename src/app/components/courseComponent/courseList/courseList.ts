@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Item } from './../../../classes/item'
+import { Course } from './../../../interfaces/course';
 
 @Component({
   selector: 'course-list',
@@ -9,7 +9,7 @@ import { Item } from './../../../classes/item'
 })
 export class CourseListComponent implements OnInit {
 
-  public courses: Item[];
+  public courses: Course[];
 
   constructor() {
   }
