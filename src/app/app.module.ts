@@ -34,11 +34,12 @@ import { MenuComponent } from './components/common/header/menu';
 import { LoginComponent } from './components/common/header/login';
 import { HeaderComponent } from './components/common/header';
 import { FooterComponent } from './components/common/footer';
-import { CourseComponent } from './components/courseComponent/courseList/course';
-import { CourseListComponent } from './components/courseComponent/courseList';
-import { ActionBarComponent } from './components/courseComponent/actionBar';
-import { AddCourseComponent } from './components/courseComponent/actionBar/addCourse';
-import { SearchComponent } from './components/courseComponent/actionBar/search';
+import { CourseComponent } from './components/coursesPage/courseList/course';
+import { CourseListComponent } from './components/coursesPage/courseList';
+import { ActionBarComponent } from './components/coursesPage/actionBar';
+import { AddCourseComponent } from './components/coursesPage/actionBar/addCourse';
+import { SearchComponent } from './components/coursesPage/actionBar/search';
+import { CoursesPageComponent } from './components/coursesPage';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -74,7 +75,8 @@ type StoreType = {
     CourseListComponent, 
     ActionBarComponent, 
     AddCourseComponent, 
-    SearchComponent
+    SearchComponent, 
+    CoursesPageComponent
     
   ],
   /**
