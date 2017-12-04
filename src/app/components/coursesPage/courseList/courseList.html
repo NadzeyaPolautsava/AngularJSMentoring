@@ -1,0 +1,7 @@
+<div>
+    <div  *ngFor="let c of courses">
+        <div>
+            <course [init]="c" (delete)="deleteItem($event);"></course>
+        </div>
+    </div>
+</div>

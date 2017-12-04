@@ -29,6 +29,17 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './components/home';
 import { NoContentComponent } from './components/no-content';
 import { XLargeDirective } from './components/home/x-large';
+import { LogoComponent } from './components/common/header/logo';
+import { MenuComponent } from './components/common/header/menu';
+import { LoginComponent } from './components/common/header/login';
+import { HeaderComponent } from './components/common/header';
+import { FooterComponent } from './components/common/footer';
+import { CourseComponent } from './components/coursesPage/courseList/course';
+import { CourseListComponent } from './components/coursesPage/courseList';
+import { ActionBarComponent } from './components/coursesPage/actionBar';
+import { AddCourseComponent } from './components/coursesPage/actionBar/addCourse';
+import { SearchComponent } from './components/coursesPage/actionBar/search';
+import { CoursesPageComponent } from './components/coursesPage';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -54,7 +65,19 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    LogoComponent, 
+    MenuComponent, 
+    LoginComponent, 
+    HeaderComponent, 
+    FooterComponent, 
+    CourseComponent, 
+    CourseListComponent, 
+    ActionBarComponent, 
+    AddCourseComponent, 
+    SearchComponent, 
+    CoursesPageComponent
+    
   ],
   /**
    * Import Angular's modules.
