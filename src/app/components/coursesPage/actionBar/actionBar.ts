@@ -4,7 +4,7 @@ import {Component} from '@angular/core'
   selector: 'action-bar',
   providers: [],
   templateUrl: './actionBar.html', 
-  styleUrls: []
+  styleUrls: ['./actionBar.css']
 })
 export class ActionBarComponent {
   constructor() {
