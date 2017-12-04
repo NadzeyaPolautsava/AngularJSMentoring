@@ -40,6 +40,7 @@ import { ActionBarComponent } from './components/coursesPage/actionBar';
 import { AddCourseComponent } from './components/coursesPage/actionBar/addCourse';
 import { SearchComponent } from './components/coursesPage/actionBar/search';
 import { CoursesPageComponent } from './components/coursesPage';
+import { CourseService } from './services/course.service'
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -97,7 +98,8 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS, 
+    CourseService
   ]
 })
 export class AppModule {
