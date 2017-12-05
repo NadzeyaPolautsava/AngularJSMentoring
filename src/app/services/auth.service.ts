@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
+import { User } from './../interfaces/user';
 
 @Injectable()
 export class AuthService {
 
-    public login() {
+    private currentUser: User;
 
+    public login (user: User) {
+        this.currentUser = user;
     }
 
     public logout() {
-
+        this.currentUser = null;
     }
 
     public isAuthenticated(): boolean {
-        return false;
+        return this.currentUser != null;
     }
 
     public getUserInfo(): string {
-        return 'Dark Knight';
+        return this.currentUser != null ? this.currentUser.username : '';
     }
 }
