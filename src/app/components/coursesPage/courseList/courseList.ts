@@ -4,7 +4,7 @@ import { CourseService } from './../../../services/course.service';
 
 @Component({
   selector: 'course-list',
-  providers: [ CourseService ],
+  providers: [],
   templateUrl: './courseList.html', 
   styleUrls: []
 })
