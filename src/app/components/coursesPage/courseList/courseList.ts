@@ -21,5 +21,8 @@ export class CourseListComponent implements OnInit {
 
   deleteItem($event) {
     console.log($event);
+    this._courseService.removeItem($event.value);
+    console.log("Courses:");
+    console.log(this.courses);
   }
 }
