@@ -1,8 +1,6 @@
 .section {
-    width: 100%;
     height: 200px;
-    margin: auto;
-    padding: 10px;
+    margin: 10px;
 }
 .course-description {
     width: 15%;
@@ -15,4 +13,9 @@
 }
 .right-element {
     float: right;
+}
+
+button {
+    margin: 3px;
+    width: 100%;
 }
