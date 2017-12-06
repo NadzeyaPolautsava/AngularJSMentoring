@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 import { AuthService } from './../../../services/auth.service';
 
 
@@ -6,9 +6,10 @@ import { AuthService } from './../../../services/auth.service';
   selector: 'login',
   providers: [],
   templateUrl: './login.html', 
-  styleUrls: []
+  styleUrls: ['login.css']
 })
 export class UserLoginComponent {
+
   constructor(private _authService: AuthService) {
   }
 
