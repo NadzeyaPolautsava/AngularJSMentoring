@@ -31,7 +31,7 @@ import { NoContentComponent } from './components/no-content';
 import { XLargeDirective } from './components/home/x-large';
 import { LogoComponent } from './components/common/header/logo';
 import { MenuComponent } from './components/common/header/menu';
-import { LoginComponent } from './components/common/header/login';
+import { UserInfoComponent } from './components/common/header/userInfo';
 import { HeaderComponent } from './components/common/header';
 import { FooterComponent } from './components/common/footer';
 import { CourseComponent } from './components/coursesPage/courseList/course';
@@ -40,6 +40,9 @@ import { ActionBarComponent } from './components/coursesPage/actionBar';
 import { AddCourseComponent } from './components/coursesPage/actionBar/addCourse';
 import { SearchComponent } from './components/coursesPage/actionBar/search';
 import { CoursesPageComponent } from './components/coursesPage';
+import { LoginPageComponent } from './components/loginPage';
+import { UserLoginComponent } from './components/loginPage/login';
+
 import { CourseService } from './services/course.service'
 import { AuthService } from './services/auth.service'
 
@@ -70,7 +73,7 @@ type StoreType = {
     XLargeDirective,
     LogoComponent, 
     MenuComponent, 
-    LoginComponent, 
+    UserInfoComponent, 
     HeaderComponent, 
     FooterComponent, 
     CourseComponent, 
@@ -78,7 +81,9 @@ type StoreType = {
     ActionBarComponent, 
     AddCourseComponent, 
     SearchComponent, 
-    CoursesPageComponent
+    CoursesPageComponent, 
+    LoginPageComponent, 
+    UserLoginComponent
     
   ],
   /**
