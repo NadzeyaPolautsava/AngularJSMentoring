@@ -1,4 +1,4 @@
-<div class="wrapper">   
+<div *ngIf="!_authService.isAuthenticated()" class="wrapper">
     <div style="z-index: 1; margin: 10px;">
         Username: <input #username value=""/>
     </div>
