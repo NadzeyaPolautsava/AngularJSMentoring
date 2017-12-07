@@ -35,14 +35,12 @@ export class CourseService {
     }
 
     public updateItem(course: Course) {
-        for (let i = 0; i < this.courses.length; ++i) {
+        for (let i = 0; i < this.courses.length; i++) {
             if (this.courses[i].id == course.id) {
                 this.courses[i] = course;
                 break;
             }
         }
-        this.removeItem(course.id);
-        this.courses.push(course);
     }
 
     public removeItem(courseId: number) {
