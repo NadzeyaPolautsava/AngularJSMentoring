@@ -47,7 +47,7 @@ export class CourseComponent implements
     if (confirm("Are you sure?")) {
       this.courseDelete.emit({
         value: this.course.id
-        
+
       })
     }
   } 

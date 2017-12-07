@@ -19,6 +19,6 @@ export class AuthService {
     }
 
     public getUserInfo(): string {
-        return this.currentUser != null ? this.currentUser.username : '';
+        return this.isAuthenticated() ? this.currentUser.username : '';
     }
 }

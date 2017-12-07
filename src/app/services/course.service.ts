@@ -17,8 +17,14 @@ export class CourseService {
     }
 
     public createCourse(duration: number, title: string, createddate: Date, description: string): Course {
-        var newCourseId = Math.max.apply(Math, this.courses.map(function (o) { return o.id; })) + 1;
-        var c: Course = { id: newCourseId, duration: duration, title: title, createdDate: createddate, description: description };
+        let newCourseId = Math.max.apply(Math, this.courses.map(function (o) { o => o.id })) + 1;
+        let c: Course = { 
+            id: newCourseId, 
+            duration: duration, 
+            title: title, 
+            createdDate: createddate, 
+            description: description 
+        };
         this.courses.push(c);
         return c;
     }
@@ -29,14 +35,20 @@ export class CourseService {
     }
 
     public updateItem(course: Course) {
+        for (let i = 0; i < this.courses.length; ++i) {
+            if (this.courses[i].id == course.id) {
+                this.courses[i] = course;
+                break;
+            }
+        }
         this.removeItem(course.id);
         this.courses.push(course);
     }
 
     public removeItem(courseId: number) {
-        for (var i = this.courses.length - 1; i >= 0; --i) {
+        for (let i = 0; i < this.courses.length; ++i) {
             if (this.courses[i].id == courseId) {
-                this.courses.splice(i,1);
+                this.courses.splice(i, 1);
             }
         }
     }
