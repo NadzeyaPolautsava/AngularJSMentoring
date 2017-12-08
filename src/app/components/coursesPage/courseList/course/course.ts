@@ -44,9 +44,12 @@ export class CourseComponent implements
   }
 
   deleteCourse() {
-    this.courseDelete.emit({
-      value: this.course.id
-    })
+    if (confirm("Are you sure?")) {
+      this.courseDelete.emit({
+        value: this.course.id
+
+      })
+    }
   } 
 
   ngOnInit() {

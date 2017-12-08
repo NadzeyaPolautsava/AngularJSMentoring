@@ -1,0 +1,11 @@
+<div *ngIf="!_authService.isAuthenticated()" class="wrapper">
+    <div style="z-index: 1; margin: 10px;">
+        Username: <input #username value=""/>
+    </div>
+    <div style="z-index: 2; margin: 10px;">
+        Password: <input #password value=""/>
+    </div>
+    <div style="z-index: 3; margin: 10px;">
+        <button (click)="login(username.value, password.value)">Enter</button>
+    </div>
+</div>
