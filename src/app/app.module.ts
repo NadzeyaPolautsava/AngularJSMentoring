@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { LoginModule } from './login/login.module';
 import { CourseModule } from './course/course.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 import {
   NgModule,
@@ -63,6 +64,7 @@ type StoreType = {
     LoginModule,
     SharedModule,
     CourseModule, 
+    CoreModule,
 
     CommonModule, 
     BrowserModule,
