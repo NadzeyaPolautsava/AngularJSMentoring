@@ -10,6 +10,7 @@ import { CoursesPageComponent } from './coursesPage/coursesPage';
 
 import { CourseService } from './../core/services/course.service';
 
+import { HighlightBorderDirective } from './directives/highlightBorder.directive'
 
 @NgModule({
   imports: [ CommonModule ],
@@ -19,7 +20,8 @@ import { CourseService } from './../core/services/course.service';
         ActionBarComponent, 
         AddCourseComponent,
         SearchComponent, 
-        CoursesPageComponent
+        CoursesPageComponent, 
+        HighlightBorderDirective
   ], 
   exports: [
     CoursesPageComponent
