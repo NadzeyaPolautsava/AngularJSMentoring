@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { User } from './../interfaces/user';
+import { IUser } from './../../interfaces/user';
 
 @Injectable()
 export class AuthService {
 
-    private currentUser: User;
+    private currentUser: IUser;
 
-    public login (user: User) {
+    public login (user: IUser) {
         this.currentUser = user;
     }
 
