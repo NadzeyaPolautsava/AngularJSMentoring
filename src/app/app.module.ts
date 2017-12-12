@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
+
+import { LoginModule } from './login/login.module';
+import { CourseModule } from './course/course.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+
 import {
   NgModule,
   ApplicationRef
@@ -26,25 +33,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './components/home';
-import { NoContentComponent } from './components/no-content';
-import { XLargeDirective } from './components/home/x-large';
-import { LogoComponent } from './components/common/header/logo';
-import { MenuComponent } from './components/common/header/menu';
-import { UserInfoComponent } from './components/common/header/userInfo';
-import { HeaderComponent } from './components/common/header';
-import { FooterComponent } from './components/common/footer';
-import { CourseComponent } from './components/coursesPage/courseList/course';
-import { CourseListComponent } from './components/coursesPage/courseList';
-import { ActionBarComponent } from './components/coursesPage/actionBar';
-import { AddCourseComponent } from './components/coursesPage/actionBar/addCourse';
-import { SearchComponent } from './components/coursesPage/actionBar/search';
-import { CoursesPageComponent } from './components/coursesPage';
-import { LoginPageComponent } from './components/loginPage';
-import { UserLoginComponent } from './components/loginPage/login';
-
-import { CourseService } from './services/course.service'
-import { AuthService } from './services/auth.service'
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -67,29 +55,18 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    HomeComponent,
-    NoContentComponent,
-    XLargeDirective,
-    LogoComponent, 
-    MenuComponent, 
-    UserInfoComponent, 
-    HeaderComponent, 
-    FooterComponent, 
-    CourseComponent, 
-    CourseListComponent, 
-    ActionBarComponent, 
-    AddCourseComponent, 
-    SearchComponent, 
-    CoursesPageComponent, 
-    LoginPageComponent, 
-    UserLoginComponent
-    
+    AppComponent
   ],
   /**
    * Import Angular's modules.
    */
   imports: [
+    LoginModule,
+    SharedModule,
+    CourseModule, 
+    CoreModule,
+
+    CommonModule, 
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -104,9 +81,7 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS, 
-    CourseService, 
-    AuthService
+    APP_PROVIDERS
   ]
 })
 export class AppModule {

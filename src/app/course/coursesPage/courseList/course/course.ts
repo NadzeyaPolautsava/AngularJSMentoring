@@ -11,7 +11,7 @@ import {
   SimpleChange
 } from '@angular/core'
 import { Item } from './../../../../classes/item'
-import { Course } from './../../../../interfaces/course'
+import { ICourse } from './../../../../interfaces/course'
 
 @Component({
   selector: 'course',
@@ -20,7 +20,7 @@ import { Course } from './../../../../interfaces/course'
   styleUrls: ['./course.css']
 })
 export class CourseComponent implements
-            Course, 
+            ICourse, 
             OnChanges, OnInit, DoCheck,
             AfterContentInit, AfterContentChecked,
             AfterViewInit, AfterViewChecked,
@@ -31,7 +31,7 @@ export class CourseComponent implements
   description: string;
   id: number;
 
-  @Input('init') course : Course = {
+  @Input('init') course : ICourse = {
     duration: 0,
     title: '', 
     createdDate: new Date(), 
