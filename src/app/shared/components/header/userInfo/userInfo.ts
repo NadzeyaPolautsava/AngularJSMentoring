@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core'
-import { AuthService } from './../../../../services/auth.service'
+import { AuthService } from './../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './userInfo.html', 
   styleUrls: ['./userInfo.css'], 
-  // providers: [ AuthService ]
 })
 export class UserInfoComponent implements OnInit {
 

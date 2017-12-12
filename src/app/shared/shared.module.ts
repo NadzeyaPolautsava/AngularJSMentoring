@@ -1,13 +1,12 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LogoComponent } from './components/common/header/logo';
-import { MenuComponent } from './components/common/header/menu';
-import { UserInfoComponent } from './components/common/header/userInfo';
-import { HeaderComponent } from './components/common/header';
-import { FooterComponent } from './components/common/footer';
+import { LogoComponent } from './components/header/logo';
+import { MenuComponent } from './components/header/menu';
+import { UserInfoComponent } from './components/header/userInfo';
+import { HeaderComponent } from './components/header';
+import { FooterComponent } from './components/footer';
 
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [ CommonModule ],
@@ -24,10 +23,6 @@ import { AuthService } from './services/auth.service';
     UserInfoComponent, 
     HeaderComponent, 
     FooterComponent
-   ], 
-
-   providers: [
-     AuthService
    ]
 })
 export class SharedModule { }
