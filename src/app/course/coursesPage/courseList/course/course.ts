@@ -29,6 +29,7 @@ export class CourseComponent implements
   title: string;
   createdDate: Date;
   description: string;
+  topRated: boolean;
   id: number;
 
   @Input('init') course : ICourse = {
@@ -36,6 +37,7 @@ export class CourseComponent implements
     title: '', 
     createdDate: new Date(), 
     description: '',
+    topRated: false, 
     id: 0
   };
   
