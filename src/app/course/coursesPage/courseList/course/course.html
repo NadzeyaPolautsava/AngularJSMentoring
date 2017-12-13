@@ -1,10 +1,10 @@
 <section class="section">
     <div [ngClass]="{ 'rating-static' : course.topRated}"></div>
      <div>       
-        Title: {{ course.title }} <br/>
+        Title: {{ course.title | uppercase }} <br/>
         Description: {{ course.description }} <br/>
         Duration: {{ course.duration }} <br/>
-        Created Date: {{ course.createdDate }} <br/>
+        Created Date: {{ course.createdDate | date }} <br/>
         Top Rated: {{ course.topRated }}
     </div>
     <div class="course-buttons">
