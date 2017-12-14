@@ -12,6 +12,8 @@ import { CourseService } from './../core/services/course.service';
 
 import { HighlightBorderDirective } from './directives/highlightBorder.directive'
 
+import { DurationPipe } from './pipes/duration.pipe';
+
 @NgModule({
   imports: [ CommonModule ],
   declarations: [
@@ -21,7 +23,8 @@ import { HighlightBorderDirective } from './directives/highlightBorder.directive
         AddCourseComponent,
         SearchComponent, 
         CoursesPageComponent, 
-        HighlightBorderDirective
+        HighlightBorderDirective, 
+        DurationPipe
   ], 
   exports: [
     CoursesPageComponent

@@ -7,6 +7,7 @@ export class CourseService {
     public courses: ICourse[] = [
         { id: 1, duration: 100, title: 'Some Video', createdDate: new Date("February 4, 2022 10:13:00"), description: 'description' },
         { id: 2, duration: 200, title: 'Some Video2', createdDate: new Date("February 4, 2016 10:13:00"), description: 'description2' },
+        { id: 3, duration: 15, title: 'Some Video3', createdDate: new Date("February 4, 2016 10:13:00"), description: 'description2' },
     ];
 
     constructor(

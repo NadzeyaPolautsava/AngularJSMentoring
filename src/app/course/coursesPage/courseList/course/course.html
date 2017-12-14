@@ -2,7 +2,7 @@
     <div class="course-description">
             Title: {{ course.title }} <br/>
             Description: {{ course.description }} <br/>
-            Duration: {{ course.duration }}
+            Duration: {{ course.duration | duration }} <br/>
             Created Date: {{ course.createdDate }}
     </div>
     <div class="course-buttons">
