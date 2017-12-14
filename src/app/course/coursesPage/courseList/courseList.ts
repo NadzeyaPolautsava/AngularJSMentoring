@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { ICourse } from './../../../interfaces/course';
 import { CourseService } from  './../../../core/services/course.service';
+import { TitlePipe } from './../../../shared/pipes/title.pipe';
 
 @Component({
   selector: 'course-list',
@@ -11,7 +12,6 @@ import { CourseService } from  './../../../core/services/course.service';
 export class CourseListComponent implements OnInit {
 
   public courses: ICourse[];
-  @Input('init') specialTitle: string = 'lal';
 
   constructor(private _courseService: CourseService) {
   }
@@ -25,5 +25,9 @@ export class CourseListComponent implements OnInit {
     this._courseService.removeItem($event.value);
     console.log("Courses:");
     console.log(this.courses);
+  }
+
+  filter(title: string) {
+    this.courses = new TitlePipe().transform(this._courseService.courses, title);
   }
 }

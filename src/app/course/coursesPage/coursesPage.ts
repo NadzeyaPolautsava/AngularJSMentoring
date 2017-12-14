@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
+import { CourseListComponent } from './courseList/courseList';
 
 @Component({
   selector: 'courses-page',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core'
 })
 export class CoursesPageComponent {
     
+  @ViewChild('child') child: CourseListComponent;
   constructor() {
   }
 
@@ -16,5 +18,6 @@ export class CoursesPageComponent {
   findCourse($event) {
     console.log('IN COURSE PAGE');
     this.query = $event.value;
+    this.child.filter(this.query);
   }
 }
