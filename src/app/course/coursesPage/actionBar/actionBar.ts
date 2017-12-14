@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 
 @Component({
   selector: 'action-bar',
@@ -7,6 +7,16 @@ import {Component} from '@angular/core'
   styleUrls: ['./actionBar.css']
 })
 export class ActionBarComponent {
+
+  @Output('filterByTitleInActionBar') filterByTitleInActionBar = new EventEmitter();
   constructor() {
+  }
+
+  filterCourses($event) {
+    console.log('In actionBar filterCourses');
+
+    this.filterByTitleInActionBar.emit({
+      value: $event.value
+    });
   }
 }

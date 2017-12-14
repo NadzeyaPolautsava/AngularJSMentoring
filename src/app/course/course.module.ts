@@ -12,11 +12,11 @@ import { CourseService } from './../core/services/course.service';
 
 import { HighlightBorderDirective } from './directives/highlightBorder.directive'
 
-import { DurationPipe } from './pipes/duration.pipe';
-import { TitlePipe } from './pipes/title.pipe'; 
+import { SharedModule } from './../shared/shared.module';
+
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [ CommonModule, SharedModule ],
   declarations: [
         CourseComponent, 
         CourseListComponent, 
@@ -24,9 +24,7 @@ import { TitlePipe } from './pipes/title.pipe';
         AddCourseComponent,
         SearchComponent, 
         CoursesPageComponent, 
-        HighlightBorderDirective, 
-        DurationPipe, 
-        TitlePipe
+        HighlightBorderDirective
   ], 
   exports: [
     CoursesPageComponent

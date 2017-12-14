@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'courses-page',
@@ -7,12 +7,14 @@ import {Component} from '@angular/core'
   styleUrls: []
 })
 export class CoursesPageComponent {
+    
   constructor() {
   }
 
   public query: string = '';
 
-  findCourse(query: string) {
-    this.query = query;
+  findCourse($event) {
+    console.log('IN COURSE PAGE');
+    this.query = $event.value;
   }
 }
