@@ -6,7 +6,7 @@ import { CourseService } from  './../../../core/services/course.service';
   selector: 'course-list',
   providers: [],
   templateUrl: './courseList.html', 
-  styleUrls: []
+  styleUrls: ['./courseList.css']
 })
 export class CourseListComponent implements OnInit {
 

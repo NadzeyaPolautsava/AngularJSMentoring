@@ -3,5 +3,6 @@ export interface ICourse {
     title: string;
     createdDate: Date;
     description: string;
+    topRated: boolean;
     id: number;
 }
