@@ -1,2 +1,6 @@
 <action-bar></action-bar>
-<course-list></course-list>
+ <div>   
+    <input #userQuery (keyup.enter)="findCourse(userQuery.value)" value=""/>
+    <button (click)="findCourse(userQuery.value)">Find</button>
+</div>
+<course-list [init]="userQuery.value" ></course-list>

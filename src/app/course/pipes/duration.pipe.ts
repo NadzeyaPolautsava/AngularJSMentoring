@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-//Tell Angular2 we're creating a Pipe with TypeScript decorators
 @Pipe({
 	name: 'duration'
 })

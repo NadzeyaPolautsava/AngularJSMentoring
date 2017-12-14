@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { ICourse } from './../../../interfaces/course';
 import { CourseService } from  './../../../core/services/course.service';
 
@@ -11,6 +11,7 @@ import { CourseService } from  './../../../core/services/course.service';
 export class CourseListComponent implements OnInit {
 
   public courses: ICourse[];
+  @Input('init') specialTitle: string = 'lal';
 
   constructor(private _courseService: CourseService) {
   }

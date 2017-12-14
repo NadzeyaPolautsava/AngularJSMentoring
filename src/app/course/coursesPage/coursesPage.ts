@@ -9,4 +9,10 @@ import {Component} from '@angular/core'
 export class CoursesPageComponent {
   constructor() {
   }
+
+  public query: string = '';
+
+  findCourse(query: string) {
+    this.query = query;
+  }
 }

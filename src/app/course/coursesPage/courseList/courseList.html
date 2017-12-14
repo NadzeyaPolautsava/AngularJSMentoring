@@ -4,7 +4,7 @@
                 No data. Feel free to add new course.
         </div>
     </div>
-    <div *ngFor="let c of courses">
+    <div *ngFor="let c of courses | sortByTitle: specialTitle">
         <div highlight-border [courseCreatedDate]="c.createdDate"> 
             <course [init]="c" (delete)="deleteItem($event);"></course>
         </div>
