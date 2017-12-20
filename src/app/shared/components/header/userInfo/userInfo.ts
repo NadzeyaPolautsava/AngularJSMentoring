@@ -10,7 +10,7 @@ export class UserInfoComponent implements OnInit {
 
   public showLoginLink: boolean;
 
-  constructor(private _authService: AuthService) {
+  constructor(public _authService: AuthService) {
   }
 
   ngOnInit() {

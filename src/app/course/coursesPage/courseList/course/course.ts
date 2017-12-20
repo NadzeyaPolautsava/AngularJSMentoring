@@ -8,7 +8,8 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChange
+  SimpleChange, 
+  ChangeDetectionStrategy
 } from '@angular/core'
 import { Item } from './../../../../classes/item'
 import { ICourse } from './../../../../interfaces/course'
@@ -17,7 +18,8 @@ import { ICourse } from './../../../../interfaces/course'
   selector: 'course',
   providers: [],
   templateUrl: './course.html', 
-  styleUrls: ['./course.css']
+  styleUrls: ['./course.css'], 
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseComponent implements
             ICourse, 

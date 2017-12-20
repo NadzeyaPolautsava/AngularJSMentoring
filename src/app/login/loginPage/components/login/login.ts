@@ -10,7 +10,7 @@ import { AuthService } from './../../../../core/services/auth.service';
 })
 export class UserLoginComponent {
 
-  constructor(private _authService: AuthService) {
+  constructor(public _authService: AuthService) {
   }
 
   login (username: string, password: string) {
