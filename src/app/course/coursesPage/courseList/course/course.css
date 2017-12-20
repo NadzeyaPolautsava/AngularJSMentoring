@@ -19,3 +19,15 @@ button {
     margin: 3px;
     width: 100%;
 }
+
+.star-icon {
+    content: "lallalal";
+    display: block;
+}
+
+.rating-static {
+    width: 60px;
+    height: 16px;
+    display: block;
+    background: url('http://www.itsalif.info/blogfiles/rating/star-rating.png') 0 0 no-repeat;
+ }

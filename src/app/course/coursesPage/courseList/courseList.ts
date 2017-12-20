@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { ICourse } from './../../../interfaces/course';
 import { CourseService } from  './../../../core/services/course.service';
+import { TitlePipe } from './../../../shared/pipes/title.pipe';
 
 @Component({
   selector: 'course-list',
   providers: [],
   templateUrl: './courseList.html', 
-  styleUrls: []
+  styleUrls: ['./courseList.css']
 })
 export class CourseListComponent implements OnInit {
 
@@ -20,9 +21,10 @@ export class CourseListComponent implements OnInit {
   }
 
   deleteItem($event) {
-    console.log($event);
     this._courseService.removeItem($event.value);
-    console.log("Courses:");
-    console.log(this.courses);
+  }
+
+  filter(title: string) {
+    this.courses = new TitlePipe().transform(this._courseService.courses, title);
   }
 }

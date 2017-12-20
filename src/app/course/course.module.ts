@@ -10,16 +10,21 @@ import { CoursesPageComponent } from './coursesPage/coursesPage';
 
 import { CourseService } from './../core/services/course.service';
 
+import { HighlightBorderDirective } from './directives/highlightBorder.directive'
+
+import { SharedModule } from './../shared/shared.module';
+
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [ CommonModule, SharedModule ],
   declarations: [
         CourseComponent, 
         CourseListComponent, 
         ActionBarComponent, 
         AddCourseComponent,
         SearchComponent, 
-        CoursesPageComponent
+        CoursesPageComponent, 
+        HighlightBorderDirective
   ], 
   exports: [
     CoursesPageComponent

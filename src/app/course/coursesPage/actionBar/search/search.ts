@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 
 @Component({
   selector: 'app-search',
@@ -8,10 +8,19 @@ import {Component} from '@angular/core'
 })
 export class SearchComponent {
 
-  constructor() {
-  }
+  @Output('filterByTitle') filterByTitle = new EventEmitter();
+  
 
   findCourse(userQuery: string) {
     console.log(userQuery);
+    this.filterByTitle.emit({
+      value: userQuery
+    });
+  }
+
+  filterCourses($event) {
+    this.filterByTitle.emit({
+      value: $event.value
+    });
   }
 }

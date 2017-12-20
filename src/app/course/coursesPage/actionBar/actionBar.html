@@ -1,6 +1,6 @@
 <div class="bar">
     <div class="left">
-        <app-search></app-search>
+        <app-search (filterByTitle)="filterCourses($event)"></app-search>
     </div>
     <div class="right">
         <add-course></add-course>
