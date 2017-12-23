@@ -10,11 +10,15 @@ import { AuthService } from './../../../../core/services/auth.service';
 })
 export class UserLoginComponent {
 
-  constructor(public _authService: AuthService) {
+  constructor(private _authService: AuthService) {
   }
 
   login (username: string, password: string) {
       this._authService.login({username: username, token: password});
       console.log(this._authService.getUserInfo());
+  }
+
+  isAuthenticated(): boolean {
+    return this._authService.isAuthenticated();
   }
 }
