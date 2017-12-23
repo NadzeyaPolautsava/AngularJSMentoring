@@ -25,6 +25,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
+const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 /**
  * Webpack Constants
@@ -95,6 +96,9 @@ module.exports = function (env) {
     },
 
     module: {
+      loaders: [
+        { test: /\.ts$/, loader: '@ngtools/webpack' }
+      ], 
 
       rules: [
 
@@ -132,6 +136,11 @@ module.exports = function (env) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+
+      new AotPlugin({
+        tsConfigPath: './tsconfig.json',
+        entryModule: 'src/app/app.module.ts#AppModule'
+      }), 
 
       new ModuleConcatenationPlugin(),
 
