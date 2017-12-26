@@ -16,4 +16,12 @@ export class UserInfoComponent implements OnInit {
   ngOnInit() {
     this.showLoginLink = !this._authService.isAuthenticated();
   }
+
+  isAuthenticated(): boolean {
+    return this._authService.isAuthenticated();
+  }
+
+  getUserName(): string {
+    return this._authService.getUserInfo();
+  }
 }

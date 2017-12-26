@@ -17,4 +17,8 @@ export class UserLoginComponent {
       this._authService.login({username: username, token: password});
       console.log(this._authService.getUserInfo());
   }
+
+  isAuthenticated(): boolean {
+    return this._authService.isAuthenticated();
+  }
 }
