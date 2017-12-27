@@ -4,7 +4,6 @@ import { CourseService } from  './../../../core/services/course.service';
 import { TitlePipe } from './../../../shared/pipes/title.pipe';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map'
-import { last } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'course-list',
