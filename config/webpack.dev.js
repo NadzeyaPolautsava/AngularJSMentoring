@@ -145,11 +145,7 @@ module.exports = function (options) {
         }
       }),
 
-      new HotModuleReplacementPlugin(), 
-      new AotPlugin({
-        tsConfigPath: './tsconfig.json',
-        entryModule: 'src/app/app.module.ts#AppModule'
-      })
+      new HotModuleReplacementPlugin()
 
     ],
 
