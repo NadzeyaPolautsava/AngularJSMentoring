@@ -3,6 +3,7 @@ import { ICourse } from './../../../interfaces/course';
 import { CourseService } from  './../../../core/services/course.service';
 import { TitlePipe } from './../../../shared/pipes/title.pipe';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map'
 import { last } from '@angular/router/src/utils/collection';
 
 @Component({
@@ -40,7 +41,8 @@ export class CourseListComponent implements OnInit {
     twoWeeksBefore.setDate(today.getDate() - 14);
     console.log('today ' + today);
     console.log('twoWeeksBefore ' + twoWeeksBefore);
-    let subscription = this._courseService.getList().filter(x => x.createdDate > twoWeeksBefore)
+    let subscription = this._courseService.getList().filter(x => x.createdDate >= twoWeeksBefore)
+    .map(x => x as ICourse)
     .subscribe(
         x => this.courses.push(x), 
         e => console.log(e), 
