@@ -29,7 +29,7 @@ export class CourseComponent implements
             OnDestroy {
   duration: number;
   title: string;
-  createdDate: Date;
+  date: Date;
   description: string;
   topRated: boolean;
   id: number;
@@ -37,7 +37,7 @@ export class CourseComponent implements
   @Input('init') course : ICourse = {
     duration: 0,
     title: '', 
-    createdDate: new Date(), 
+    date: new Date(), 
     description: '',
     topRated: false, 
     id: 0

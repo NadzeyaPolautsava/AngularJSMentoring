@@ -15,7 +15,7 @@ export class HighlightBorderDirective {
    }
 
     private highlightBorder() {
-      console.log(this.courseCreatedDate);
+      console.log('courseCreatedDate ' + this.courseCreatedDate);
       if (!this.courseCreatedDate) {
         return;
       }

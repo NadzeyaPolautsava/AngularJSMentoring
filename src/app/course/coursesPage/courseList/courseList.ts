@@ -40,7 +40,7 @@ export class CourseListComponent implements OnInit {
     twoWeeksBefore.setDate(today.getDate() - 14);
     console.log('today ' + today);
     console.log('twoWeeksBefore ' + twoWeeksBefore);
-    let subscription = this._courseService.getList().filter(x => x.createdDate >= twoWeeksBefore)
+    let subscription = this._courseService.getList().filter(x => x.date > twoWeeksBefore)
     .map(x => x as ICourse)
     .subscribe(
         x => this.courses.push(x), 
