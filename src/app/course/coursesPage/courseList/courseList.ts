@@ -11,13 +11,18 @@ import { TitlePipe } from './../../../shared/pipes/title.pipe';
 })
 export class CourseListComponent implements OnInit {
 
-  public courses: ICourse[];
+  public courses: ICourse[] = [];
 
   constructor(private _courseService: CourseService) {
   }
 
   ngOnInit() {
-    this.courses = this._courseService.getList();
+    let subscription = this._courseService.getList().subscribe(
+        x => this.courses = x, 
+        e => console.log(e), 
+        () => console.log('data received')
+    );
+    subscription.unsubscribe();
   }
 
   deleteItem($event) {
