@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from './../../interfaces/course';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
+
 
 @Injectable()
 export class CourseService {
@@ -15,8 +17,8 @@ export class CourseService {
     constructor(
     ) { }
 
-    public getList(): Observable<ICourse[]> {
-        return Observable.of(this.courses);
+    public getList(): Observable<ICourse> {
+        return Observable.from(this.courses);
     }
 
     public createCourse(duration: number, title: string, createddate: Date, description: string): Observable<ICourse> {
