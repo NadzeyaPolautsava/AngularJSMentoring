@@ -8,6 +8,9 @@ import { AddCourseComponent } from './coursesPage/actionBar/addCourse';
 import { SearchComponent } from './coursesPage/actionBar/search';
 import { CoursesPageComponent } from './coursesPage/coursesPage';
 import { AddCoursePageComponent } from './addCoursePage/addCoursePage';
+import { CreatedDateInputComponent } from './addCoursePage/createdDateInput/createdDateInput';
+import { DurationInputComponent } from './addCoursePage/durationInput/durationInput';
+import { SelectAuthorsComponent } from './addCoursePage/selectAuthors/selectAuthors';
 
 import { CourseService } from './../core/services/course.service';
 
@@ -26,6 +29,10 @@ import { SharedModule } from './../shared/shared.module';
         SearchComponent, 
         CoursesPageComponent,
         AddCoursePageComponent, 
+        CreatedDateInputComponent, 
+        DurationInputComponent, 
+        SelectAuthorsComponent,     
+
         HighlightBorderDirective
   ], 
   exports: [

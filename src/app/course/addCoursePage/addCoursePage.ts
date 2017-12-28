@@ -5,7 +5,7 @@ import { CourseListComponent } from './courseList/courseList';
   selector: 'add-course-page',
   providers: [],
   templateUrl: './addCoursePage.html', 
-  styleUrls: []
+  styleUrls: [ './addCoursePage.css' ]
 })
 export class AddCoursePageComponent {
     
