@@ -7,6 +7,7 @@ import { ActionBarComponent } from './coursesPage/actionBar';
 import { AddCourseComponent } from './coursesPage/actionBar/addCourse';
 import { SearchComponent } from './coursesPage/actionBar/search';
 import { CoursesPageComponent } from './coursesPage/coursesPage';
+import { AddCoursePageComponent } from './addCoursePage/addCoursePage';
 
 import { CourseService } from './../core/services/course.service';
 
@@ -23,11 +24,13 @@ import { SharedModule } from './../shared/shared.module';
         ActionBarComponent, 
         AddCourseComponent,
         SearchComponent, 
-        CoursesPageComponent, 
+        CoursesPageComponent,
+        AddCoursePageComponent, 
         HighlightBorderDirective
   ], 
   exports: [
-    CoursesPageComponent
+    CoursesPageComponent, 
+    AddCoursePageComponent
   ], 
   providers: [
     CourseService
