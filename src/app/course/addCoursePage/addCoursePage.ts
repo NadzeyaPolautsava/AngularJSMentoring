@@ -13,4 +13,12 @@ export class AddCoursePageComponent {
 
   constructor() {
   }
+
+  saveCourse() {
+    console.log('save called');
+  }
+
+  cancel() {
+    console.log('cancel called');
+  }
 }
