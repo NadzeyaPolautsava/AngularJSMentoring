@@ -1,5 +1,6 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { CourseComponent } from './coursesPage/courseList/course';
 import { CourseListComponent } from './coursesPage/courseList';
@@ -20,7 +21,7 @@ import { SharedModule } from './../shared/shared.module';
 
 
 @NgModule({
-  imports: [ CommonModule, SharedModule ],
+  imports: [ CommonModule, SharedModule, FormsModule ],
   declarations: [
         CourseComponent, 
         CourseListComponent, 

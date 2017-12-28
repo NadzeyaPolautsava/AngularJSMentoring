@@ -8,7 +8,9 @@ import { CourseListComponent } from './courseList/courseList';
   styleUrls: [ './addCoursePage.css' ]
 })
 export class AddCoursePageComponent {
-    
+  
+  public title: string = '';
+
   constructor() {
   }
 }
