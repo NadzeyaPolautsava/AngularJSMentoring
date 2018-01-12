@@ -22,6 +22,8 @@ export class HighlightBorderDirective {
       let today = new Date();
       let twoWeeksBefore = new Date();
       twoWeeksBefore.setDate(today.getDate() - 14);
+      console.log('today: ' + today);
+      // console.log('this.courseCreatedDate > today: ' + (this.courseCreatedDate.getUTCMilliseconds() > today.getUTCMilliseconds() ));
       if (this.courseCreatedDate < today && this.courseCreatedDate >= twoWeeksBefore) {
         this.el.nativeElement.style.backgroundColor = 'lightgreen	';  
       } else if (this.courseCreatedDate > today) {

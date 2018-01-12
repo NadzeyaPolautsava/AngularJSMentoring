@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ICourse } from './../../interfaces/course';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import { Http, RequestOptions, Request, URLSearchParams, RequestMethod, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -14,11 +16,35 @@ export class CourseService {
         
     ];
 
-    constructor(
-    ) { }
+    public baseUrl: string;
 
-    public getList(): Observable<ICourse> {
-        return Observable.from(this.courses);
+    constructor(private http: HttpClient) { 
+        this.baseUrl = 'http://localhost:3004';
+    }
+
+    public getList(): Observable<ICourse[]> {
+
+        return this.http.get<ICourse[]>('http://localhost:3004/courses');
+        // return this.http.get<ICourse[]>('http://localhost:3004/courses');
+        // console.log('in getList');
+        // let requestOptions = new RequestOptions();
+        // let request: Request;
+        // // let urlParams: URLSearchParams = new URLSearchParams();
+
+        // requestOptions.url = this.baseUrl + '/courses';
+        // requestOptions.method = RequestMethod.Get;
+        // request = new Request(requestOptions);
+        // this.http.get('http://localhost:3004/courses').subscribe(data => {
+        //     // Read the result field from the JSON response.
+        //     console.log(data);
+        //   });
+        // return Observable.from(this.courses);
+        // this.http.request(request).subscribe( data => {
+        //     console.log(data);
+        // });
+        // let res: Observable<ICourse> = this.http.request(request)
+        //     .map((res:Response) => res.json());
+        
     }
 
     public createCourse(duration: number, title: string, createddate: Date, description: string): Observable<ICourse> {

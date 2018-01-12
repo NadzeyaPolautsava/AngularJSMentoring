@@ -37,16 +37,23 @@ export class CourseListComponent implements OnInit {
   fetchCourses(): void {
     let today = new Date();
     let twoWeeksBefore = new Date();
+    
     twoWeeksBefore.setDate(today.getDate() - 14);
-    console.log('today ' + today);
-    console.log('twoWeeksBefore ' + twoWeeksBefore);
-    let subscription = this._courseService.getList().filter(x => x.date > twoWeeksBefore)
-    .map(x => x as ICourse)
+    console.log('twoWeeksBefore: ' + twoWeeksBefore);
+    // let subscription = this._courseService.getList().filter(x => x.date > twoWeeksBefore)
+    // .map(x => x as ICourse)
+    // .subscribe(
+    //     x => this.courses.push(x), 
+    //     e => console.log(e), 
+    //     () => console.log('data received')
+    // );
+    this._courseService.getList()
+    .map(courses => courses.filter(course => course.topRated))
     .subscribe(
-        x => this.courses.push(x), 
+        x => this.courses = x, 
         e => console.log(e), 
         () => console.log('data received')
     );
-    subscription.unsubscribe();
+    // subscription.unsubscribe();
   }
 }
