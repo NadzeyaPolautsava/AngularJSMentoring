@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "username": "jacquelinevance@diginetic.com",
+      "token": "9f340762-e953-4a24-a3aa-97a64fa5d3de",
+      "password": "culpa"
+    },
+    {
+      "username": "santanamorrison@isologix.com",
+      "token": "6aa17d72-c35b-4d4d-afb5-315f42bc0408",
+      "password": "cillum"
+    },
+    {
+      "username": "nataliadaugherty@idealis.com",
+      "token": "a9169102-cb60-4a97-b712-58baec6099aa",
+      "password": "enim"
+    },
+    {
+      "username": "carmellarice@navir.com",
+      "token": "20d58626-a579-4350-a612-663127979ae8",
+      "password": "sunt"
+    },
+    {
+      "username": "joannolsen@zuvy.com",
+      "token": "4eb664a6-50fd-43aa-8dc2-10e2e2911463",
+      "password": "officia"
+    },
+    {
+      "username": "glennafuller@konnect.com",
+      "token": "95e0e30c-da1b-4e5d-ad36-cbe349685d2c",
+      "password": "sint"
+    },
+    {
+      "username": "concettasmith@brainquil.com",
+      "token": "18c2e6f3-f052-4eff-8fdc-2d919e612bab",
+      "password": "laborum"
+    },
+    {
+      "username": "admin",
+      "token": "admin",
+      "password": "admin"
+    }
+  ],
+  "courses": [
+    {
+      "id": 6,
+      "title": "Xsports",
+      "date": "Fri Sep 14 2001 09:34:02 GMT+0300 (Belarus Standard Time)",
+      "description": "Laborum occaecat qui voluptate mollit non aliquip est laboris cupidatat anim elit anim non exercitation.",
+      "topRated": true
+    }
+  ]
+}
