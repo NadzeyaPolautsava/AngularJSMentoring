@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <div style="z-index: 1; margin: 10px;">
+        Title: <input  [(ngModel)]="title" />
+    </div>
+    <div style="z-index: 2; margin: 10px;">
+        Description:  <textarea #description placeholder="Description"></textarea>
+    </div>
+    <div style="z-index: 3; margin: 10px;">
+        <input-created-date></input-created-date>
+    </div>
+    <div style="z-index: 4; margin: 10px;">
+        <input-duration></input-duration>
+    </div>
+    <div style="z-index: 5; margin: 10px;">
+        <select-authors></select-authors>
+    </div>
+    <div style="z-index: 6; margin: 10px;">
+        <button (click)="saveCourse();">Save</button>
+        <button (click)="cancel();">Cancel</button>
+    </div>
+</div>

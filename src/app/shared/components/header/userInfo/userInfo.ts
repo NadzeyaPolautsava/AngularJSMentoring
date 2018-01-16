@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AuthService } from './../../../../core/services/auth.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,11 @@ export class UserInfoComponent implements OnInit {
   }
 
   getUserName(): string {
-    return this._authService.getUserInfo();
+    let userInfo;
+    let subject = this._authService.getUserInfo().subscribe(x => userInfo = x);
+    subject.unsubscribe();
+    return userInfo;
   }
+
+
 }

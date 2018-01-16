@@ -5,7 +5,7 @@
         </div>
     </div>
     <div *ngFor="let c of courses">
-        <div highlight-border [courseCreatedDate]="c.createdDate"> 
+        <div highlight-border [courseCreatedDate]="c.date"> 
             <course [init]="c" (delete)="deleteItem($event);"></course>
         </div>
     </div>
