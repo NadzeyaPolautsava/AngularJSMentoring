@@ -33,7 +33,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
         e => console.log(e),
         () => {
           deleteSubscription.unsubscribe(); // is it okay???????
-          this.fetchCourses();
+          this.fetchCourses(); // the same question :) 
       });
   }
 
