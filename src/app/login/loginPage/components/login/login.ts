@@ -14,7 +14,7 @@ export class UserLoginComponent {
   }
 
   login (username: string, password: string) {
-      this._authService.login({username: username, token: password});
+      this._authService.login(username, password);
       console.log(this._authService.getUserInfo());
   }
 

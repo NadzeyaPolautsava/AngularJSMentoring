@@ -48,12 +48,16 @@ export class CourseListComponent implements OnInit {
     //     () => console.log('data received')
     // );
     this._courseService.getList()
-    .map(courses => courses.filter(course => course.topRated))
+    .map(courses => courses.filter(course => ( course.topRated ) ))
     .subscribe(
         x => this.courses = x, 
         e => console.log(e), 
         () => console.log('data received')
     );
+    console.log('NJNJJJ ');
+    for (let i = 0; i < this.courses.length; i++) {
+      console.log('Time: ' + this.courses[i].date.getTime());
+    }
     // subscription.unsubscribe();
   }
 }
