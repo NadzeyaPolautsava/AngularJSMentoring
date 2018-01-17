@@ -22,16 +22,34 @@ export class CourseService {
         this.baseUrl = 'http://localhost:3004';
     }
 
-    public getList(): Observable<ICourse[]> {
+    public getList(page: number): Observable<ICourse[]> {
         let requestOptions = new RequestOptions();
         let request: Request;
+        let searchParams: URLSearchParams = new URLSearchParams();
 
+        searchParams.append('_page', page.toString());
         requestOptions.url = this.baseUrl + '/courses';
         requestOptions.method = RequestMethod.Get;
+        requestOptions.search = searchParams;
 
         request = new Request(requestOptions);
         return this.http.request(request)
             .map((res: Response) => res.json());
+    }
+
+    public getTotalCount(): Observable<Number> {
+        let requestOptions = new RequestOptions();
+        let request: Request;
+        let searchParams: URLSearchParams = new URLSearchParams();
+
+        searchParams.append('_page', '1');
+        requestOptions.url = this.baseUrl + '/courses';
+        requestOptions.method = RequestMethod.Get;
+        requestOptions.search = searchParams;
+
+        request = new Request(requestOptions);
+        return this.http.request(request)
+            .map((res: Response) => Number(res.headers.get('X-Total-Count')));
     }
 
     public createCourse(duration: number, title: string, createddate: Date, description: string): Observable<ICourse> {
@@ -63,30 +81,13 @@ export class CourseService {
     }
 
     public removeItem(courseId: number) {
-        // for (let i = 0; i < this.courses.length; ++i) {
-        //     if (this.courses[i].id == courseId) {
-        //         this.courses.splice(i, 1);
-        //     }
-        // }
         let requestOptions = new RequestOptions();
         let request: Request;
-        // let urlParams: URLSearchParams = new URLSearchParams();
-        // let
         requestOptions.url = this.baseUrl + '/courses/' + courseId;
         requestOptions.method = RequestMethod.Delete;
-        // urlParams.append('id', courseId.toString());
-        // requestOptions.search = urlParams;
-        // requestOptions.body = '/' + courseId;
 
         request = new Request(requestOptions);
         return this.http.request(request)
             .map((res: Response) => res.json());
-            // .subscribe(
-            //     x => console.log(x),
-            //     e => console.log(e),
-            //     () => {
-
-            //     }
-            // );
     }
 }

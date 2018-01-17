@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './services/auth.service';
 import { CourseService } from './services/course.service';
+import { PagerService } from './services/pager.service';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CourseService } from './services/course.service';
   exports: [], 
   providers: [
     AuthService, 
-    CourseService
+    CourseService, 
+    PagerService
   ]
 
 })

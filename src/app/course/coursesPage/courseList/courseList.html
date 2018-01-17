@@ -4,9 +4,28 @@
                 No data. Feel free to add new course.
         </div>
     </div>
-    <div *ngFor="let c of courses">
+    <div *ngFor="let c of pagedItems">
         <div highlight-border [courseCreatedDate]="c.date"> 
             <course [init]="c" (delete)="deleteItem($event);"></course>
         </div>
     </div>
+
+     <!-- pager -->
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="fetchCourses(1)">First</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="fetchCourses(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="fetchCourses(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="fetchCourses(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="fetchCourses(pager.totalPages)">Last</a>
+                </li>
+            </ul>
 </div>
