@@ -28,34 +28,35 @@ export class CourseListComponent implements OnInit, OnDestroy {
     let today: Date = new Date();
     let twoWeeksBefore = new Date(today.getDate() - 14);
 
-    let totalCountSubscription =  this._courseService.getTotalCount()
+    let totalCountSubscription = this._courseService.getTotalCount()
       .subscribe(
-        x => this.coursesTotalCount = x,
-        e => console.log(e),
-        () => {
-          console.log('total count received ' + this.coursesTotalCount);
-          totalCountSubscription.unsubscribe();
-          this.fetchCourses(1);
-        }
+      x => this.coursesTotalCount = x,
+      e => console.log(e),
+      () => {
+        console.log('total count received ' + this.coursesTotalCount);
+        totalCountSubscription.unsubscribe();
+        this.fetchCourses(1);
+      }
       );
   }
 
   deleteItem($event) {
     let deleteSubscription = this._courseService.removeItem($event.value)
       .subscribe(
-        x => console.log(x),
-        e => console.log(e),
-        () => {
-          deleteSubscription.unsubscribe(); // is it okay???????
-          this.fetchCourses(this.pager.currentPage); // the same question :) 
+      x => console.log(x),
+      e => console.log(e),
+      () => {
+        deleteSubscription.unsubscribe(); // is it okay???????
+        this.fetchCourses(this.pager.currentPage); // the same question :) 
       });
   }
 
   filter(title: string) {
-    this.courses = new TitlePipe().transform(this._courseService.courses, title);
+    // this.courses = new TitlePipe().transform(this._courseService.courses, title);
+    this.fetchCourses(this.pager.currentPage, title);
   }
 
-  fetchCourses(page: number): void {
+  fetchCourses(page: number, title?: string): void {
     if (this.courseListSubscription) {
       this.courseListSubscription.unsubscribe();
     }
@@ -64,26 +65,40 @@ export class CourseListComponent implements OnInit, OnDestroy {
 
     twoWeeksBefore.setDate(today.getDate() - 14);
     console.log('twoWeeksBefore: ' + twoWeeksBefore);
-    this._courseService.getList(page)
+    if (title) {
+      this.courseListSubscription = this._courseService.find(page, title)
       //.map(courses => courses.filter(course => (course.topRated)))
       .subscribe(
+      x => {
+        this.courses = x;
+        console.log('Length: ' + x.length);
+        this.setPage(page);
+      },
+        e => console.log(e),
+       () => console.log('data received')
+      );
+    } else {
+      this.courseListSubscription = this._courseService.getList(page)
+        //.map(courses => courses.filter(course => (course.topRated)))
+        .subscribe(
         x => {
           this.courses = x;
           console.log('Length: ' + x.length);
           this.setPage(page);
         },
-        e => console.log(e),
-        () => console.log('data received')
-      );
+          e => console.log(e),
+         () => console.log('data received')
+        );
+    }
   }
 
-  setPage(page: number) {
+  setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
     this.pager = this.pagerService.getPager(this.coursesTotalCount.valueOf(), page);
     this.pagedItems = this.courses;
-  }
+  }
 
   ngOnDestroy() {
     if (this.courseListSubscription) {

@@ -37,6 +37,22 @@ export class CourseService {
             .map((res: Response) => res.json());
     }
 
+    public find(page: number, title: string): Observable<ICourse[]> {
+        let requestOptions = new RequestOptions();
+        let request: Request;
+        let searchParams: URLSearchParams = new URLSearchParams();
+
+        searchParams.append('_page', page.toString());
+        searchParams.append('title_like', title);
+        requestOptions.url = this.baseUrl + '/courses';
+        requestOptions.method = RequestMethod.Get;
+        requestOptions.search = searchParams;
+
+        request = new Request(requestOptions);
+        return this.http.request(request)
+            .map((res: Response) => res.json());
+    }
+
     public getTotalCount(): Observable<Number> {
         let requestOptions = new RequestOptions();
         let request: Request;

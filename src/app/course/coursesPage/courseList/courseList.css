@@ -6,3 +6,18 @@
 a {
     cursor: pointer;
 }
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.center {
+    text-align: center;
+}
