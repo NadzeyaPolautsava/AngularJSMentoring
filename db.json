@@ -43,11 +43,144 @@
   ],
   "courses": [
     {
-      "id": 6,
-      "title": "Xsports",
-      "date": "Fri Sep 14 2001 09:34:02 GMT+0300 (Belarus Standard Time)",
-      "description": "Laborum occaecat qui voluptate mollit non aliquip est laboris cupidatat anim elit anim non exercitation.",
+      "id": 0,
+      "title": "commodo",
+      "date": "2020-01-22T04:34:30",
+      "description": "excepteur commodo minim nulla ea ex ut",
       "topRated": true
+    },
+    {
+      "id": 1,
+      "title": "laborum",
+      "date": "2016-11-11T03:40:22",
+      "description": "mollit dolor nostrud veniam mollit qui consectetur",
+      "topRated": true
+    },
+    {
+      "id": 2,
+      "title": "officia",
+      "date": "2017-06-02T01:49:27",
+      "description": "nostrud incididunt exercitation nisi aliqua excepteur elit",
+      "topRated": true
+    },
+    {
+      "id": 3,
+      "title": "sit",
+      "date": "2015-08-05T12:57:01",
+      "description": "reprehenderit ea enim proident duis dolore deserunt",
+      "topRated": false
+    },
+    {
+      "id": 4,
+      "title": "culpa",
+      "date": "2017-09-23T03:49:30",
+      "description": "fugiat non consectetur ut nisi veniam pariatur",
+      "topRated": true
+    },
+    {
+      "id": 5,
+      "title": "fugiat",
+      "date": "2014-08-02T05:09:34",
+      "description": "duis excepteur laborum mollit deserunt dolore do",
+      "topRated": false
+    },
+    {
+      "id": 6,
+      "title": "exercitation",
+      "date": "2016-11-13T03:39:15",
+      "description": "ad consectetur excepteur et consequat mollit aliqua",
+      "topRated": true
+    },
+    {
+      "id": 7,
+      "title": "occaecat",
+      "date": "2017-09-20T12:02:04",
+      "description": "commodo voluptate veniam quis culpa magna est",
+      "topRated": true
+    },
+    {
+      "id": 8,
+      "title": "anim",
+      "date": "2017-06-02T09:41:27",
+      "description": "ullamco incididunt incididunt incididunt anim duis dolore",
+      "topRated": false
+    },
+    {
+      "id": 9,
+      "title": "exercitation",
+      "date": "2015-04-23T11:36:50",
+      "description": "est dolore officia excepteur tempor adipisicing ullamco",
+      "topRated": true
+    },
+    {
+      "id": 10,
+      "title": "et",
+      "date": "2016-12-21T11:36:23",
+      "description": "magna veniam commodo amet irure aliquip nostrud",
+      "topRated": false
+    },
+    {
+      "id": 11,
+      "title": "nisi",
+      "date": "2017-02-03T09:15:35",
+      "description": "est in mollit irure consectetur do et",
+      "topRated": true
+    },
+    {
+      "id": 12,
+      "title": "magna",
+      "date": "2015-10-04T11:49:08",
+      "description": "ullamco enim aliqua culpa Lorem culpa aliqua",
+      "topRated": false
+    },
+    {
+      "id": 13,
+      "title": "commla",
+      "date": "2016-11-06T11:49:02",
+      "description": "proident veniam exercitation ad magna Lorem dolor",
+      "topRated": false
+    },
+    {
+      "id": 14,
+      "title": "amet",
+      "date": "2017-02-09T04:15:28",
+      "description": "non id in velit qui minim sunt",
+      "topRated": true
+    },
+    {
+      "id": 15,
+      "title": "mollit",
+      "date": "2016-09-25T05:59:15",
+      "description": "elit proident dolore ullamco amet pariatur qui",
+      "topRated": true
+    },
+    {
+      "id": 16,
+      "title": "minim",
+      "date": "2014-09-12T01:32:28",
+      "description": "culpa reprehenderit enim laborum duis nostrud occaecat",
+      "topRated": false
+    },
+    {
+      "id": 17,
+      "title": "veniam",
+      "date": "2015-08-03T01:38:30",
+      "description": "consequat velit fugiat pariatur nostrud sit elit",
+      "topRated": true
+    },
+    {
+      "id": 18,
+      "title": "exercitation",
+      "date": "2015-01-01T12:41:04",
+      "description": "irure do magna laboris est ut tempor",
+      "topRated": false
+    },
+    {
+      "id": 19,
+      "title": "adipisicing",
+      "date": "2015-06-06T12:57:33",
+      "description": "laborum ad nulla eiusmod fugiat consequat laboris",
+      "topRated": false
     }
   ]
 }
