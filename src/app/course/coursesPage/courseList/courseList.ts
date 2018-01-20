@@ -71,7 +71,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
     console.log('QUERY: ' + query);
     if (query) {
       this.courseListSubscription = this._courseService.find(page, query)
-      //.map(courses => courses.filter(course => (course.topRated)))
+      // .map(courses => courses.filter(course => (course.topRated)))
       .subscribe(
       x => {
         this.courses = x;
@@ -83,7 +83,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
       );
     } else {
       this.courseListSubscription = this._courseService.getList(page)
-        //.map(courses => courses.filter(course => (course.topRated)))
+        // .map(courses => courses.filter(course => (new Date(course.date) > twoWeeksBefore)))
         .subscribe(
         x => {
           this.courses = x;
