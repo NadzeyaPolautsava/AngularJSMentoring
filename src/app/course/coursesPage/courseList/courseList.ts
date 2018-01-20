@@ -18,8 +18,9 @@ export class CourseListComponent implements OnInit, OnDestroy {
   public courses: ICourse[] = [];
   private courseListSubscription: Subscription;
   pager: any = {};
-  pagedItems: ICourse[];
+  pagedItems: ICourse[] = [];
   private coursesTotalCount: Number;
+  private searchTitle: string;
 
   constructor(private _courseService: CourseService, private pagerService: PagerService) {
   }
@@ -53,6 +54,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
 
   filter(title: string) {
     // this.courses = new TitlePipe().transform(this._courseService.courses, title);
+    this.searchTitle = title;
     this.fetchCourses(this.pager.currentPage, title);
   }
 
@@ -65,8 +67,10 @@ export class CourseListComponent implements OnInit, OnDestroy {
 
     twoWeeksBefore.setDate(today.getDate() - 14);
     console.log('twoWeeksBefore: ' + twoWeeksBefore);
-    if (title) {
-      this.courseListSubscription = this._courseService.find(page, title)
+    let query = title ? title : this.searchTitle;
+    console.log('QUERY: ' + query);
+    if (query) {
+      this.courseListSubscription = this._courseService.find(page, query)
       //.map(courses => courses.filter(course => (course.topRated)))
       .subscribe(
       x => {
