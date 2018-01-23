@@ -47,8 +47,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
       x => console.log(x),
       e => console.log(e),
       () => {
-        
-        this.fetchCourses(this.pager.currentPage); // the same question :) 
+        this.fetchCourses(this.pager.currentPage); 
       });
   }
 
