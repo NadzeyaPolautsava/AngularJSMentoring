@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { AuthService } from './../../../../core/services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,9 +7,10 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './userInfo.html', 
   styleUrls: ['./userInfo.css'], 
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent implements OnInit, OnDestroy {
 
   public showLoginLink: boolean;
+  private alive = true;
 
   constructor(private _authService: AuthService) {
   }
@@ -24,9 +25,14 @@ export class UserInfoComponent implements OnInit {
 
   getUserName(): string {
     let userInfo;
-    let subject = this._authService.getUserInfo().subscribe(x => userInfo = x);
-    subject.unsubscribe();
+    let subject = this._authService.getUserInfo()
+      .takeWhile(() => this.alive)
+      .subscribe(x => userInfo = x);
     return userInfo;
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
   }
 
 

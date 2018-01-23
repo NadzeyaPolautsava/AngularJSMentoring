@@ -5,7 +5,6 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Http, RequestOptions, Request, URLSearchParams, RequestMethod, Response, Headers } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
-
 @Injectable()
 export class AuthService implements OnDestroy {
 
@@ -33,13 +32,14 @@ export class AuthService implements OnDestroy {
         requestOptions.search = urlParams;
 
         request = new Request(requestOptions);
-        this.subscription = this.http.request(request)    
+        let subscription = this.http.request(request)    
             .map((res: Response) => res.json())
             .subscribe((json: Object) => {
                 var ar = <IUser[]> json;
                 this.currentUser = ar[0];
                 this.subject.next(this.currentUser.username);
             });
+        this.subscription.add(subscription);
     }
 
     public logout() {

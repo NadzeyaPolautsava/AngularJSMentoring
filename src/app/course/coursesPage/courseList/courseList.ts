@@ -4,6 +4,7 @@ import { CourseService } from './../../../core/services/course.service';
 import { TitlePipe } from './../../../shared/pipes/title.pipe';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/takeWhile';
 import { Subscription } from 'rxjs/Subscription';
 import { PagerService } from '../../../core/services/pager.service';
 
@@ -16,11 +17,11 @@ import { PagerService } from '../../../core/services/pager.service';
 export class CourseListComponent implements OnInit, OnDestroy {
 
   public courses: ICourse[] = [];
-  private courseListSubscription: Subscription;
   pager: any = {};
   pagedItems: ICourse[] = [];
   private coursesTotalCount: Number;
   private searchTitle: string;
+  private alive: boolean = true;
 
   constructor(private _courseService: CourseService, private pagerService: PagerService) {
   }
@@ -35,7 +36,6 @@ export class CourseListComponent implements OnInit, OnDestroy {
       e => console.log(e),
       () => {
         console.log('total count received ' + this.coursesTotalCount);
-        totalCountSubscription.unsubscribe();
         this.fetchCourses(1);
       }
       );
@@ -47,7 +47,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
       x => console.log(x),
       e => console.log(e),
       () => {
-        deleteSubscription.unsubscribe(); // is it okay???????
+        
         this.fetchCourses(this.pager.currentPage); // the same question :) 
       });
   }
@@ -59,9 +59,6 @@ export class CourseListComponent implements OnInit, OnDestroy {
   }
 
   fetchCourses(page: number, title?: string): void {
-    if (this.courseListSubscription) {
-      this.courseListSubscription.unsubscribe();
-    }
     let today = new Date();
     let twoWeeksBefore = new Date();
 
@@ -70,8 +67,9 @@ export class CourseListComponent implements OnInit, OnDestroy {
     let query = title ? title : this.searchTitle;
     console.log('QUERY: ' + query);
     if (query) {
-      this.courseListSubscription = this._courseService.find(page, query)
+      let courseListSubscription = this._courseService.find(page, query)
       // .map(courses => courses.filter(course => (course.topRated)))
+      .takeWhile(() => this.alive)
       .subscribe(
       x => {
         this.courses = x;
@@ -82,8 +80,9 @@ export class CourseListComponent implements OnInit, OnDestroy {
        () => console.log('data received')
       );
     } else {
-      this.courseListSubscription = this._courseService.getList(page)
+      let courseListSubscription = this._courseService.getList(page)
         // .map(courses => courses.filter(course => (new Date(course.date) > twoWeeksBefore)))
+        .takeWhile(() => this.alive)
         .subscribe(
         x => {
           this.courses = x;
@@ -105,8 +104,6 @@ export class CourseListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.courseListSubscription) {
-      this.courseListSubscription.unsubscribe();
-    }
+    this.alive = false;
   }
 }
