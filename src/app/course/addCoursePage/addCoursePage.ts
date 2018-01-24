@@ -24,7 +24,8 @@ export class AddCoursePageComponent implements OnInit{
             title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
             description: [null, [Validators.required, Validators.maxLength(500)]], 
             duration: [null, [Validators.required]], 
-            date: [null, [Validators.required] ]
+            date: [null, [Validators.required] ], 
+            authors: [null]
         })
     });
 
