@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { CourseListComponent } from './courseList/courseList';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { CustomValidators } from './../../core/validation/customVallidators';
 
 
 @Component({
@@ -22,14 +23,15 @@ export class AddCoursePageComponent implements OnInit{
         course: this.formBuilder.group({
             title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
             description: [null, [Validators.required, Validators.maxLength(500)]], 
-            duration: [122]
+            duration: [null, [Validators.required]], 
+            date: [null, [Validators.required] ]
         })
     });
 
     this.courseGroup.valueChanges.subscribe(value => console.log(value))
 }
 
-  saveCourse() {
+  saveCourse(form) {
     console.log('save called');
   }
 
