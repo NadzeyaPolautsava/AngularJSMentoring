@@ -17,3 +17,21 @@ input-duration.ng-dirty.ng-invalid > input {
 textarea.ng-dirty.ng-invalid {
   border: 1px solid red !important;
 }
+
+.form-wrapper label.required:after {
+  content: "*";
+  position: absolute;
+  color: #f00;
+}
+
+.form-wrapper label.required {
+  position: relative;
+}
+
+.form-wrapper label {
+  margin: 10px;
+  width: 100px;
+  padding-right: 15px;
+  text-align: right;
+  flex-shrink: 0;
+}

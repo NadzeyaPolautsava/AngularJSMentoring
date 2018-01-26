@@ -11,6 +11,7 @@ import { NgForm } from "@angular/forms";
 export class UserLoginComponent {
 
   @ViewChild('form') public userForm: NgForm;
+  public wrongCreds: Boolean = false;
 
   constructor(private _authService: AuthService) {
   }
@@ -18,7 +19,7 @@ export class UserLoginComponent {
   login (form) {
     // console.log();
       this._authService.login(form.value.user.username, form.value.user.password);
-      console.log(this._authService.getUserInfo());
+      this.wrongCreds = !this.isAuthenticated();      
   }
 
   isAuthenticated(): boolean {

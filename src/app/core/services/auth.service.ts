@@ -37,8 +37,10 @@ export class AuthService implements OnDestroy {
             .takeWhile(() => this.alive)
             .subscribe((json: Object) => {
                 var ar = <IUser[]> json;
-                this.currentUser = ar[0];
-                this.subject.next(this.currentUser.username);
+                if (ar.length > 0) {
+                    this.currentUser = ar[0];
+                    this.subject.next(this.currentUser.username);
+                }
             });
     }
 

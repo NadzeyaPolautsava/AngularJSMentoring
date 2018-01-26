@@ -2,42 +2,42 @@
     <form class="form-wrapper" [formGroup]="courseGroup" (submit)="saveCourse(courseGroup)">
 
         <fieldset formGroupName="course">
-            <div style="z-index: 1; margin: 10px;" class="form-group">
-                <label class="" for="titleInput">Title:</label>
+            <div class="form-group">
+                <label class="required" for="titleInput">Title</label>
                 <input formControlName="title"  class="form-control" id="titleInput"/>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.title.dirty && courseGroup.controls.course.controls.title.errors">
                     {{courseGroup.controls.course.controls.title.errors | json}}
                 </span>
             </div>
-            <div style="z-index: 2; margin: 10px;">
-                <label>Description:</label>
+            <div>
+                <label class="required">Description</label>
                 <textarea formControlName="description" placeholder="Description" class="form-control"></textarea>
             </div>
-            <div style="z-index: 3; margin: 10px;">
+            <div>
                 <input-created-date formControlName="date" ></input-created-date>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.date.dirty && courseGroup.controls.course.controls.date.errors">
                     {{courseGroup.controls.course.controls.date.errors | json}}
                 </span>
             </div>
-            <div style="z-index: 4; margin: 10px;">
+            <div>
                 <input-duration formControlName="duration" ngModel></input-duration>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.duration.dirty && courseGroup.controls.course.controls.duration.errors">
                     {{courseGroup.controls.course.controls.duration.errors | json}}
                 </span>
             </div>
-            <div style="z-index: 5; margin: 10px;">
+            <div>
                 <select-authors formControlName="authors"></select-authors>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.authors.dirty && courseGroup.controls.course.controls.authors.errors">
                     {{courseGroup.controls.course.controls.authors.errors | json}}
                 </span>
             </div>
-            <div style="z-index: 6; margin: 10px;">
+            <div class="buttons-block">
                 <button class="btn" [disabled]="courseGroup.invalid" (click)="saveCourse();">Save</button>
                 <button class="btn" (click)="cancel();">Cancel</button>
             </div>
         </fieldset>
     </form>
-    <h4>Form value</h4>
+    <!-- <h4>Form value</h4>
     <pre>{{courseGroup.value | json}}</pre>
-    <pre>Is myForm valid?: <br>{{courseGroup.valid | json}}</pre>
+    <pre>Is myForm valid?: <br>{{courseGroup.valid | json}}</pre> -->
 </div>

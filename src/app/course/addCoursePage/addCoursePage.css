@@ -4,3 +4,8 @@
 input-created-date.ng-dirty.ng-invalid > * {
     border: 1px solid red;
 }
+
+.buttons-block {
+    margin: 10px; 
+    text-align:center;
+}
