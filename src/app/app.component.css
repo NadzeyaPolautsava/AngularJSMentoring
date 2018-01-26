@@ -6,3 +6,14 @@ html, body{
 a.active {
   background-color: gray;
 }
+input-created-date.ng-dirty.ng-invalid > input {
+  border: 1px solid red;
+}
+
+input-duration.ng-dirty.ng-invalid > input {
+  border: 1px solid red;
+}
+
+textarea.ng-dirty.ng-invalid {
+  border: 1px solid red !important;
+}

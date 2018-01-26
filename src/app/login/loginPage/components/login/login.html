@@ -1,11 +1,21 @@
 <div *ngIf="!isAuthenticated()" class="wrapper">
-    <div style="z-index: 1; margin: 10px;">
-        Username: <input #username value=""/>
-    </div>
-    <div style="z-index: 2; margin: 10px;">
-        Password: <input #password value=""/>
-    </div>
-    <div style="z-index: 3; margin: 10px;">
-        <button (click)="login(username.value, password.value)">Enter</button>
-    </div>
+    <form #form="ngForm" >
+        <fieldset ngModelGroup="user">
+            <div style="z-index: 1; margin: 10px;">
+                <label>Username: </label>
+                <input name="username" value="" ngModel required/>
+            </div>
+            <div style="z-index: 2; margin: 10px;">
+                <label>Password: </label>
+                <input name="password" value="" ngModel required/>
+            </div>
+            <div style="z-index: 3; margin: 10px;">
+                <button (click)="login(form)" [disabled]="form.invalid" class="btn">Enter</button>
+            </div>
+        </fieldset>
+    </form>
+    <h4>Form value</h4>
+    <pre>{{form.value | json}}</pre>
+    <!-- {{form.user.username}} -->
 </div>
+

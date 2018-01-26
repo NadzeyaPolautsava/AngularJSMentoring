@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core'
 import { AuthService } from './../../../../core/services/auth.service';
-
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'login',
@@ -10,11 +10,14 @@ import { AuthService } from './../../../../core/services/auth.service';
 })
 export class UserLoginComponent {
 
+  @ViewChild('form') public userForm: NgForm;
+
   constructor(private _authService: AuthService) {
   }
 
-  login (username: string, password: string) {
-      this._authService.login(username, password);
+  login (form) {
+    // console.log();
+      this._authService.login(form.value.user.username, form.value.user.password);
       console.log(this._authService.getUserInfo());
   }
 

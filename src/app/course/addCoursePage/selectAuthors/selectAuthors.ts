@@ -4,6 +4,7 @@ import { IAuthor } from './../../../interfaces/author';
 import { Observable } from 'rxjs/Observable';
 import { AuthorService } from './../../../core/services/author.service';
 import { FormGroup } from '@angular/forms/src/model';
+import { Validator } from '@angular/forms/src/directives/validators';
 
 const CUSTOM_AUTHORS_SELECT_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -11,13 +12,19 @@ const CUSTOM_AUTHORS_SELECT_ACCESSOR = {
   multi: true
 };
 
+const CUSTOM_AUTHORS_SELECT_VALIDATORS = { 
+  provide: NG_VALIDATORS, 
+  useExisting: forwardRef(() => SelectAuthorsComponent), 
+  multi: true 
+}
+
 @Component({
   selector: 'select-authors',
-  providers: [CUSTOM_AUTHORS_SELECT_ACCESSOR],
+  providers: [CUSTOM_AUTHORS_SELECT_ACCESSOR, CUSTOM_AUTHORS_SELECT_VALIDATORS],
   templateUrl: './selectAuthors.html', 
-  styleUrls: []
+  styleUrls:   [ './selectAuthors.css' ]
 })
-export class SelectAuthorsComponent implements ControlValueAccessor, OnInit {
+export class SelectAuthorsComponent implements ControlValueAccessor, OnInit, Validator {
   @Input('authors')
   _authors: Array<IAuthor> = [];
 
@@ -66,4 +73,8 @@ export class SelectAuthorsComponent implements ControlValueAccessor, OnInit {
   }
 
   registerOnTouched() {}
+
+  validate(c: FormControl) {
+    return  this._authors.length < 1 ? { valid: false } : null;
+  }
 }

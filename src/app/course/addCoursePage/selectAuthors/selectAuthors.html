@@ -1,7 +1,10 @@
-Authors: 
-<label *ngFor="let item of items | async" class="checkbox" >
-    <input type="checkbox" [(ngModel)]="authors"
-      [value]="item"
-      (change)="setAuthors($event, item)">
+<label>Authors:</label> 
+<div class="form-check" *ngFor="let item of items | async">
+
+    <label class="form-check-label" >
+        <input type="checkbox" [(ngModel)]="authors"  class="form-check-input"
+    [value]="item" 
+    (change)="setAuthors($event, item)">
         {{item.firstName}} {{item.lastName}}
-</label>
+      </label>
+</div>

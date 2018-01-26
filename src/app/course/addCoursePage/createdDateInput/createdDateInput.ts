@@ -18,7 +18,7 @@ const CUSTOM_DATE_INPUT_VALIDATORS = {
   selector: 'input-created-date',
   providers: [CUSTOM_DATE_INPUT_VALUE_ACCESSOR, CUSTOM_DATE_INPUT_VALIDATORS],
   templateUrl: './createdDateInput.html', 
-  styleUrls: []
+  styleUrls: ['./createdDateInput.css']
 })
 export class CreatedDateInputComponent implements ControlValueAccessor, Validator {
 
