@@ -6,29 +6,32 @@
                 <label class="required" for="titleInput">Title</label>
                 <input formControlName="title"  class="form-control" id="titleInput"/>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.title.dirty && courseGroup.controls.course.controls.title.errors">
-                    {{courseGroup.controls.course.controls.title.errors | json}}
+                    Title length should be at least 3 and not more than 50 characters.
                 </span>
             </div>
             <div>
                 <label class="required">Description</label>
                 <textarea formControlName="description" placeholder="Description" class="form-control"></textarea>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.description.dirty && courseGroup.controls.course.controls.description.errors">
+                    Description length should be at least 1 and not more than 50o characters.
+                </span>
             </div>
             <div>
                 <input-created-date formControlName="date" ></input-created-date>
-                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.date.dirty && courseGroup.controls.course.controls.date.errors">
-                    {{courseGroup.controls.course.controls.date.errors | json}}
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.date.dirty && courseGroup.controls.course.controls.date.errors.invalidDateFormat">
+                    Date is required and date format should be dd/MM/YYYY.
                 </span>
             </div>
             <div>
                 <input-duration formControlName="duration" ngModel></input-duration>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.duration.dirty && courseGroup.controls.course.controls.duration.errors">
-                    {{courseGroup.controls.course.controls.duration.errors | json}}
+                    Duration is required.
                 </span>
             </div>
             <div>
                 <select-authors formControlName="authors"></select-authors>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.authors.dirty && courseGroup.controls.course.controls.authors.errors">
-                    {{courseGroup.controls.course.controls.authors.errors | json}}
+                    At least one author needs to be selected.
                 </span>
             </div>
             <div class="buttons-block">

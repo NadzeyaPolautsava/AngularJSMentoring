@@ -35,3 +35,7 @@ textarea.ng-dirty.ng-invalid {
   text-align: right;
   flex-shrink: 0;
 }
+
+.form-wrapper .status-message.error-message {
+  color: #f00;
+}
