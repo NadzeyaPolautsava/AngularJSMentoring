@@ -1,11 +1,24 @@
-<div *ngIf="!isAuthenticated()" class="wrapper">
-    <div style="z-index: 1; margin: 10px;">
-        Username: <input #username value=""/>
+<div *ngIf="!isAuthenticated()" class="container form-group">
+    <div *ngIf="wrongCreds" class="wrapper alert alert-danger">
+        Login information is not correct.
     </div>
-    <div style="z-index: 2; margin: 10px;">
-        Password: <input #password value=""/>
-    </div>
-    <div style="z-index: 3; margin: 10px;">
-        <button (click)="login(username.value, password.value)">Enter</button>
-    </div>
+    <form #form="ngForm" class="form-wrapper">
+        <fieldset ngModelGroup="user">
+            <div style="z-index: 1; margin: 10px;">
+                <label class="required">Username</label>
+                <input name="username" value="" ngModel required class="form-control"/>
+            </div>
+            <div style="z-index: 2; margin: 10px;">
+                <label class="required">Password</label>
+                <input name="password" value="" ngModel required class="form-control" />
+            </div>
+            <div style="text-align:center;">
+                <button (click)="login(form)" [disabled]="form.invalid" class="btn">Enter</button>
+            </div>
+        </fieldset>
+    </form>
+    <h4>Form value (just for testing!)</h4>
+    <pre>{{form.value | json}}</pre>
+    <!-- {{form.user.username}} -->
 </div>
+

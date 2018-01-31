@@ -10,7 +10,7 @@ export class AuthService implements OnDestroy {
 
     private currentUser: IUser;
     private subject: ReplaySubject<string>;
-    private subscription: Subscription;
+    private alive: boolean = true;
 
     public baseUrl: string;
     
@@ -34,12 +34,14 @@ export class AuthService implements OnDestroy {
         request = new Request(requestOptions);
         let subscription = this.http.request(request)    
             .map((res: Response) => res.json())
+            .takeWhile(() => this.alive)
             .subscribe((json: Object) => {
                 var ar = <IUser[]> json;
-                this.currentUser = ar[0];
-                this.subject.next(this.currentUser.username);
+                if (ar.length > 0) {
+                    this.currentUser = ar[0];
+                    this.subject.next(this.currentUser.username);
+                }
             });
-        this.subscription.add(subscription);
     }
 
     public logout() {
@@ -57,6 +59,6 @@ export class AuthService implements OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this.alive = false;
     }
 }

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { CourseService } from './services/course.service';
 import { PagerService } from './services/pager.service';
+import { AuthorService } from './services/author.service';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PagerService } from './services/pager.service';
   providers: [
     AuthService, 
     CourseService, 
-    PagerService
+    PagerService, 
+    AuthorService
   ]
 
 })

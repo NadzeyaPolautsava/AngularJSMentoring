@@ -1,21 +1,46 @@
-<div class="wrapper">
-    <div style="z-index: 1; margin: 10px;">
-        Title: <input  [(ngModel)]="title" />
-    </div>
-    <div style="z-index: 2; margin: 10px;">
-        Description:  <textarea #description placeholder="Description"></textarea>
-    </div>
-    <div style="z-index: 3; margin: 10px;">
-        <input-created-date></input-created-date>
-    </div>
-    <div style="z-index: 4; margin: 10px;">
-        <input-duration></input-duration>
-    </div>
-    <div style="z-index: 5; margin: 10px;">
-        <select-authors></select-authors>
-    </div>
-    <div style="z-index: 6; margin: 10px;">
-        <button (click)="saveCourse();">Save</button>
-        <button (click)="cancel();">Cancel</button>
-    </div>
+<div class="container">
+    <form class="form-wrapper" [formGroup]="courseGroup" (submit)="saveCourse(courseGroup)">
+
+        <fieldset formGroupName="course">
+            <div class="form-group">
+                <label class="required" for="titleInput">Title</label>
+                <input formControlName="title"  class="form-control" id="titleInput"/>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.title.dirty && courseGroup.controls.course.controls.title.errors">
+                    Title length should be at least 3 and not more than 50 characters.
+                </span>
+            </div>
+            <div>
+                <label class="required">Description</label>
+                <textarea formControlName="description" placeholder="Description" class="form-control"></textarea>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.description.dirty && courseGroup.controls.course.controls.description.errors">
+                    Description length should be at least 1 and not more than 50o characters.
+                </span>
+            </div>
+            <div>
+                <input-created-date formControlName="date" ></input-created-date>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.date.dirty && courseGroup.controls.course.controls.date.errors.invalidDateFormat">
+                    Date is required and date format should be dd/MM/YYYY.
+                </span>
+            </div>
+            <div>
+                <input-duration formControlName="duration" ngModel></input-duration>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.duration.dirty && courseGroup.controls.course.controls.duration.errors">
+                    Duration is required.
+                </span>
+            </div>
+            <div>
+                <select-authors formControlName="authors"></select-authors>
+                <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.authors.dirty && courseGroup.controls.course.controls.authors.errors">
+                    At least one author needs to be selected.
+                </span>
+            </div>
+            <div class="buttons-block">
+                <button class="btn" [disabled]="courseGroup.invalid" (click)="saveCourse();">Save</button>
+                <button class="btn" (click)="cancel();">Cancel</button>
+            </div>
+        </fieldset>
+    </form>
+    <!-- <h4>Form value</h4>
+    <pre>{{courseGroup.value | json}}</pre>
+    <pre>Is myForm valid?: <br>{{courseGroup.valid | json}}</pre> -->
 </div>

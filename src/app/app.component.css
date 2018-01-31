@@ -6,3 +6,36 @@ html, body{
 a.active {
   background-color: gray;
 }
+input-created-date.ng-dirty.ng-invalid > input {
+  border: 1px solid red;
+}
+
+input-duration.ng-dirty.ng-invalid > input {
+  border: 1px solid red;
+}
+
+textarea.ng-dirty.ng-invalid {
+  border: 1px solid red !important;
+}
+
+.form-wrapper label.required:after {
+  content: "*";
+  position: absolute;
+  color: #f00;
+}
+
+.form-wrapper label.required {
+  position: relative;
+}
+
+.form-wrapper label {
+  margin: 10px;
+  width: 100px;
+  padding-right: 15px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.form-wrapper .status-message.error-message {
+  color: #f00;
+}
