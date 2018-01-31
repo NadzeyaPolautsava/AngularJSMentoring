@@ -41,6 +41,23 @@
       "password": "admin"
     }
   ],
+  "authors": [
+    {
+      "id": 0,
+      "firstName": "Leo",
+      "lastName": "Tolstoy"
+    },
+    {
+      "id": 1,
+      "firstName": "Fyodor",
+      "lastName": "Dostoevski"
+    },
+    {
+      "id": 2,
+      "firstName": "Saumerset",
+      "lastName": "Maugham"
+    }
+  ],
   "courses": [
     {
       "id": 0,
