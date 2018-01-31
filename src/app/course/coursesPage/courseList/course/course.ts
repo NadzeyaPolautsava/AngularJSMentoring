@@ -57,35 +57,27 @@ export class CourseComponent implements
   } 
 
   ngOnInit() {
-    console.log(`ngOnInit for ${this.course.id}`)
   }
   
   
   ngOnChanges() {
-    console.log(`ngOnChanges for ${this.course.id}`);
   }
 
   ngDoCheck() { 
-    console.log(`ngDoCheck for ${this.course.id}`); 
   }
 
   ngAfterContentInit() { 
-    console.log(`ngAfterContentInit for ${this.course.id}`);  
   }
 
   ngAfterContentChecked() { 
-    console.log(`ngAfterContentChecked for ${this.course.id}`);
   }
 
   ngAfterViewInit() { 
-    console.log(`ngAfterViewInit for ${this.course.id}`);
   }
 
   ngAfterViewChecked() { 
-    console.log(`ngAfterViewChecked for ${this.course.id}`);
   }
 
   ngOnDestroy() { 
-    console.log(`ngOnDestroy for ${this.course.id}`);
   }
 }

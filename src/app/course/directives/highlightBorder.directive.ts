@@ -1,4 +1,5 @@
 import {  Directive, ElementRef, Input } from '@angular/core';
+import { isString } from 'util';
 
 @Directive({ 
   selector: '[highlight-border]'
@@ -21,11 +22,19 @@ export class HighlightBorderDirective {
       }
       let today = new Date();
       let twoWeeksBefore = new Date();
+      let courseCreatedDate = new Date(this.courseCreatedDate);
       twoWeeksBefore.setDate(today.getDate() - 14);
-      if (this.courseCreatedDate < today && this.courseCreatedDate >= twoWeeksBefore) {
+      console.log('today: ' + today);
+      console.log('typeof ' + (isString(this.courseCreatedDate)))
+      console.log('this.courseCreatedDate > today: ' + (this.courseCreatedDate ));
+      if (courseCreatedDate < today && courseCreatedDate >= twoWeeksBefore) {
         this.el.nativeElement.style.backgroundColor = 'lightgreen	';  
-      } else if (this.courseCreatedDate > today) {
+      } else if (courseCreatedDate> today) {
         this.el.nativeElement.style.backgroundColor = 'lightskyblue';
       }
     }
+
+    isString(x: any): x is string {
+      return typeof x === "string";
+  }
 }
