@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { CourseListComponent } from './courseList/courseList';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { CustomValidators } from './../../core/validation/customVallidators';
+import { Router } from '@angular/router'
+import { CourseService } from './../../core/services/course.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class AddCoursePageComponent implements OnInit{
   public title: string = '';
   public courseGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) {
   }
 
   ngOnInit() {
@@ -34,9 +36,17 @@ export class AddCoursePageComponent implements OnInit{
 
   saveCourse(form) {
     console.log('save called');
+    this.courseService.createCourse(this.courseGroup.get('course').get('duration').value, 
+                                    this.courseGroup.get('course').get('title').value, 
+                                    this.courseGroup.get('course').get('date').value,
+                                    this.courseGroup.get('course').get('description').value)
+                                    .subscribe(x => {
+                                      console.log('Object ' + x.id);
+                                    })
+    this.router.navigateByUrl('/courses');
   }
 
   cancel() {
-    console.log('cancel called');
+    this.router.navigateByUrl('/courses');
   }
 }

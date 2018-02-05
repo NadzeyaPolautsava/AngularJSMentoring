@@ -1,6 +1,7 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { CourseComponent } from './coursesPage/courseList/course';
 import { CourseListComponent } from './coursesPage/courseList';
@@ -9,6 +10,7 @@ import { AddCourseComponent } from './coursesPage/actionBar/addCourse';
 import { SearchComponent } from './coursesPage/actionBar/search';
 import { CoursesPageComponent } from './coursesPage/coursesPage';
 import { AddCoursePageComponent } from './addCoursePage/addCoursePage';
+import { EditCoursePageComponent } from './editCoursePage/editCoursePage';
 import { CreatedDateInputComponent } from './addCoursePage/createdDateInput/createdDateInput';
 import { DurationInputComponent } from './addCoursePage/durationInput/durationInput';
 import { SelectAuthorsComponent } from './addCoursePage/selectAuthors/selectAuthors';
@@ -21,12 +23,13 @@ import { SharedModule } from './../shared/shared.module';
 
 
 @NgModule({
-  imports: [ CommonModule, SharedModule, FormsModule, ReactiveFormsModule ],
+  imports: [ CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule ],
   declarations: [
         CourseComponent, 
         CourseListComponent, 
         ActionBarComponent, 
         AddCourseComponent,
+        EditCoursePageComponent, 
         SearchComponent, 
         CoursesPageComponent,
         AddCoursePageComponent, 
@@ -38,7 +41,8 @@ import { SharedModule } from './../shared/shared.module';
   ], 
   exports: [
     CoursesPageComponent, 
-    AddCoursePageComponent
+    AddCoursePageComponent, 
+    EditCoursePageComponent
   ], 
   providers: [
     CourseService
