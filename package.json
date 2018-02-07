@@ -71,7 +71,7 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "webdriver-manager update",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js", 
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
     "json-server": "json-server --watch db.json --port 3004"
   },
   "dependencies": {
@@ -129,6 +129,7 @@
     "inline-manifest-webpack-plugin": "^3.0.1",
     "istanbul-instrumenter-loader": "2.0.0",
     "jasmine-core": "^2.5.2",
+    "json-server": "^0.12.1",
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
