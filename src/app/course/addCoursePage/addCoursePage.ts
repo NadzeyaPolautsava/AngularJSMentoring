@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
 import { CustomValidators } from './../../core/validation/customVallidators';
 import { Router } from '@angular/router'
 import { CourseService } from './../../core/services/course.service';
+import { AppConfig } from './../../config/appConfig';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { CourseService } from './../../core/services/course.service';
 })
 export class AddCoursePageComponent implements OnInit{
   
+  public static TITLE_MIN_LENGTH = 3;
+
+
   public title: string = '';
   public courseGroup: FormGroup;
 
@@ -23,8 +27,8 @@ export class AddCoursePageComponent implements OnInit{
   ngOnInit() {
     this.courseGroup = this.formBuilder.group({
         course: this.formBuilder.group({
-            title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-            description: [null, [Validators.required, Validators.maxLength(500)]], 
+            title: ['', [Validators.required, Validators.minLength(AppConfig.TITLE_MIN_LENGTH), Validators.maxLength(50)]],
+            description: [null, [Validators.required, Validators.maxLength(AppConfig.DESCRIPTION_MAX_LENGTH)]], 
             duration: [null, [Validators.required]], 
             date: [null, [Validators.required] ], 
             authors: [null]

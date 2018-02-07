@@ -91,7 +91,7 @@ export class CourseService {
             .map((res: Response) => res.json());
     }
 
-    public getItemById(courseId: number): Observable<ICourse> {
+    public getItemById(courseId: number): Observable<ICourse[]> {
         let requestOptions = new RequestOptions();
         let request: Request;
         let searchParams: URLSearchParams = new URLSearchParams();

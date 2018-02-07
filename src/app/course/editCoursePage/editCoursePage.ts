@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { ICourse } from './../../interfaces/course';
 import { CourseService } from './../../core/services/course.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { AppConfig } from './../../config/appConfig';
+import * as lodash from 'lodash'; 
 
 @Component({
   selector: 'edit-course',
@@ -30,13 +32,13 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
                 .takeWhile(() => this.alive)
                 .subscribe(
                     x => {
-                        this.currentCourse = x[0];
+                        this.currentCourse =lodash.head(x);
                         let datePipe = new DatePipe("en-US");
                         let dateValue = datePipe.transform(this.currentCourse.date, 'dd/MM/yyyy');
                         this.courseGroup = this.formBuilder.group({
                             course: this.formBuilder.group({
-                                title: [this.currentCourse.title, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-                                description: [this.currentCourse.description, [Validators.required, Validators.maxLength(500)]], 
+                                title: [this.currentCourse.title, [Validators.required, Validators.minLength(AppConfig.TITLE_MIN_LENGTH), Validators.maxLength(AppConfig.TITLE_MAX_LENGTH)]],
+                                description: [this.currentCourse.description, [Validators.required, Validators.maxLength(AppConfig.DESCRIPTION_MAX_LENGTH)]], 
                                 duration: [this.currentCourse.duration], 
                                 date: [dateValue, [Validators.required] ], 
                                 authors: []
