@@ -12,21 +12,30 @@ import { EditCoursePageComponent } from './course/editCoursePage/editCoursePage'
 export const ROUTES: Routes = [
     {
         path: '',
-        component:  LoginPageComponent
+        component:  LoginPageComponent, 
+        data: {
+            breadcrumb: "Login"
+        }
     },
     { 
         path: 'courses',
-        component:  CoursesPageComponent
+        component:  CoursesPageComponent, 
+        data: {
+            breadcrumb: "Courses"
+        }
     }, 
     { 
         path: 'courses/new',
         component:  AddCoursePageComponent,
-        canActivate: [CanActivateGuard] 
+        canActivate: [CanActivateGuard], 
+        data: {
+            breadcrumb: "New Course"
+        } 
     },
     { 
         path: 'courses/:id',
         component:  EditCoursePageComponent,
-        canActivate: [CanActivateGuard] 
+        // canActivate: [CanActivateGuard] 
     }, 
  
     { 
