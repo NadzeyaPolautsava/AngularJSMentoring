@@ -6,6 +6,7 @@ import { MenuComponent } from './components/header/menu';
 import { UserInfoComponent } from './components/header/userInfo';
 import { HeaderComponent } from './components/header';
 import { FooterComponent } from './components/footer';
+import { NoContentComponent } from './components/noContent';
 
 import { DurationPipe } from './pipes/duration.pipe';
 import { TitlePipe } from './pipes/title.pipe'; 
@@ -20,6 +21,7 @@ import { Title } from '@angular/platform-browser/src/browser/title';
     UserInfoComponent, 
     HeaderComponent, 
     FooterComponent, 
+    NoContentComponent, 
     DurationPipe, 
     TitlePipe
 ],
@@ -29,6 +31,7 @@ import { Title } from '@angular/platform-browser/src/browser/title';
     UserInfoComponent, 
     HeaderComponent, 
     FooterComponent, 
+    NoContentComponent, 
     DurationPipe, 
     TitlePipe
    ]

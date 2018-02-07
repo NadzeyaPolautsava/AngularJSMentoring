@@ -6,6 +6,8 @@ import { AuthService } from './services/auth.service';
 import { CourseService } from './services/course.service';
 import { PagerService } from './services/pager.service';
 import { AuthorService } from './services/author.service';
+import { CourseAuthorService } from './services/courseAuthor.service';
+import { CanActivateGuard } from './services/canActivateGuard';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { AuthorService } from './services/author.service';
     AuthService, 
     CourseService, 
     PagerService, 
-    AuthorService
+    AuthorService, 
+    CourseAuthorService,
+    CanActivateGuard
   ]
 
 })

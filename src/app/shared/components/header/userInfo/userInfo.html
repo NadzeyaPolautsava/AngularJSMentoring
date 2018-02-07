@@ -1,9 +1,9 @@
 <div class="right">
     <div *ngIf="!isAuthenticated()">
-        <a href="# ">Login</a>
+        <a href="/login">Login</a>
     </div>
     <div *ngIf="isAuthenticated()">
         Hello, {{getUserName()}}!
-        <button (click)="_authService.logout()">Logout</button>
+        <button (click)="doLogOut()">Logout</button>
     </div>
 </div>

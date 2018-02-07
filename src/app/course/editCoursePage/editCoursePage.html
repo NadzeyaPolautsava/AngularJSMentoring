@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="currentCourse" class="container">
     <form class="form-wrapper" [formGroup]="courseGroup" (submit)="saveCourse(courseGroup)">
 
         <fieldset formGroupName="course">
@@ -23,7 +23,7 @@
                 </span>
             </div>
             <div>
-                <input-duration formControlName="duration" ngModel></input-duration>
+                <input-duration formControlName="duration"></input-duration>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.duration.dirty && courseGroup.controls.course.controls.duration.errors">
                     Duration is required.
                 </span>
@@ -35,12 +35,11 @@
                 </span>
             </div>
             <div class="buttons-block">
-                <button class="btn" [disabled]="courseGroup.invalid" (click)="saveCourse();">Save</button>
+                <button class="btn" [disabled]="courseGroup.invalid" (click)="updateCourse();">Update</button>
                 <button class="btn" (click)="cancel();">Cancel</button>
             </div>
         </fieldset>
     </form>
-    <!-- <h4>Form value</h4>
-    <pre>{{courseGroup.value | json}}</pre>
-    <pre>Is myForm valid?: <br>{{courseGroup.valid | json}}</pre> -->
+
+    <!-- {{ currentCourse.title }} -->
 </div>
