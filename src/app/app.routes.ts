@@ -35,7 +35,7 @@ export const ROUTES: Routes = [
     { 
         path: 'courses/:id',
         component:  EditCoursePageComponent,
-        // canActivate: [CanActivateGuard] 
+        canActivate: [CanActivateGuard] 
     }, 
  
     { 

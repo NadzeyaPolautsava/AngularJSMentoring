@@ -15,11 +15,14 @@ export class UserLoginComponent {
   @ViewChild('form') public userForm: NgForm;
   public wrongCreds: Boolean = false;
 
+  
+
   constructor(private _authService: AuthService, private router: Router) {
   }
 
   login (form) {
-      this._authService.login(form.value.user.username, form.value.user.password)
+      const { username, password } = form.value.user;
+      this._authService.login(username, password);
       this.wrongCreds = !this.isAuthenticated();
       if (this.isAuthenticated) {
         console.log('aaaaa');
