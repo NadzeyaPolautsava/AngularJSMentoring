@@ -1,2 +1,5 @@
 <a href="/courses">Courses</a>
-{{ courseTitle }}
+<span *ngIf="courseTitle">
+    &gt;&nbsp;{{ courseTitle }}
+</span>
+
