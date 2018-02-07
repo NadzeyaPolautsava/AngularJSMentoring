@@ -41,9 +41,7 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe(event => {
-        // Reset variables and clear breadcrumb component on view change
         this.courseTitle = '';
-        // Drill down through child routes
         let currentRoute = this.router.routerState.snapshot.root.firstChild;
         console.log('aaa IDX: ' + this.router.routerState.snapshot.url.indexOf('courses/'));
         if (this.router.routerState.snapshot.url.indexOf('courses/') >= 0) {
@@ -60,7 +58,6 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
           );
         }
       });
-      // });
   }
 
   ngOnDestroy() {
