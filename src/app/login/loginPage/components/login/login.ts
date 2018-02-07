@@ -21,8 +21,7 @@ export class UserLoginComponent {
   }
 
   login (form) {
-      const { username, password } = form.value.user;
-      this._authService.login(username, password);
+      this._authService.login(form.value.username, form.value.password);
       this.wrongCreds = !this.isAuthenticated();
       if (this.isAuthenticated) {
         console.log('aaaaa');
