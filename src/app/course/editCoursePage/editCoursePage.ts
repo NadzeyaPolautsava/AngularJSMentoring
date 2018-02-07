@@ -1,11 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { DatePipe } from '@angular/common';
 import { ICourse } from './../../interfaces/course';
+import { ICourseAuthor } from './../../interfaces/courseAuthor';
 import { CourseService } from './../../core/services/course.service';
+import { CourseAuthorService } from './../../core/services/courseAuthor.service';
+import { AuthorService } from './../../core/services/author.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { AppConfig } from './../../config/appConfig';
 import * as lodash from 'lodash'; 
+import { IAuthor } from './../../interfaces/author';
 
 @Component({
   selector: 'edit-course',
@@ -14,11 +18,18 @@ import * as lodash from 'lodash';
 })
 export class EditCoursePageComponent implements OnInit, OnDestroy {
     public currentCourse: ICourse;
+    public courseAuthors: Array<ICourseAuthor> = [];
     public courseId: any = {};
     private alive: boolean = true;
     public courseGroup: FormGroup;
+    public selectedAuthors: Array<IAuthor> = [];
 
-    constructor(private route: ActivatedRoute, private router: Router, private courseService: CourseService, private formBuilder: FormBuilder) {
+    constructor(private route: ActivatedRoute, 
+                private router: Router, 
+                private courseService: CourseService, 
+                private courseAuthorService: CourseAuthorService,
+                private authorService: AuthorService, 
+                private formBuilder: FormBuilder) {
 
     }
 
@@ -32,7 +43,7 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
                 .takeWhile(() => this.alive)
                 .subscribe(
                     x => {
-                        this.currentCourse =lodash.head(x);
+                        this.currentCourse = lodash.head(x);
                         let datePipe = new DatePipe("en-US");
                         let dateValue = datePipe.transform(this.currentCourse.date, 'dd/MM/yyyy');
                         this.courseGroup = this.formBuilder.group({
@@ -45,7 +56,31 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
                             })
                         });
                     }
-                )
+                );
+            this.courseAuthorService.fetchForCourse(this.courseId)
+                .takeWhile(() => this.alive)
+                .subscribe(
+                    x => {
+                        this.courseAuthors = x;
+                        if (this.courseAuthors) {
+                            this.authorService.getList()
+                                .takeWhile(() => this.alive)
+                                .subscribe((data) => {
+                                    for (let i = 0; i < data.length; i++) {
+                                        console.log('FILTER: ' + this.courseAuthors.filter(e => e.authorId === data[i].id));
+                                        if (this.courseAuthors.filter(e => e.authorId === data[i].id).length > 0) {
+                                            this.selectedAuthors.push(data[i]);
+                                            console.log('PUSHED');
+                                        }
+                                    }
+                                    this.courseGroup.get('course').get('authors').setValue(this.selectedAuthors);
+                                    console.log('my authors: ' + this.selectedAuthors);
+                                })
+                        }
+                        // console.log('X:' + x[0].authorId);
+                    }
+                
+                );
         });
     }
 
@@ -65,7 +100,20 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
             .subscribe(x => {
                 console.log('Course Updated');
             });
-        // debugger;
+        if (this.courseAuthors) {
+            for (let i = 0; i < this.courseAuthors.length; i++) {
+                this.courseAuthorService.remove(this.courseAuthors[i].id);
+            }
+        }
+        
+        
+        let authors = this.courseGroup.get('course').get('authors').value;
+        alert('AUTHORS: ' + authors.length);
+        for (let i = 0; i < authors.length; i++) {
+            this.courseAuthorService.save(this.courseId, authors[i].id);
+            
+        }
+
         this.router.navigateByUrl('courses');
     }
 

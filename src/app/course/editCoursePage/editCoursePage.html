@@ -29,11 +29,17 @@
                 </span>
             </div>
             <div>
-                <select-authors formControlName="authors"></select-authors>
+                <select-authors formControlName="authors" [selectedAuthors]="selectedAuthors"></select-authors>
                 <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.authors.dirty && courseGroup.controls.course.controls.authors.errors">
                     At least one author needs to be selected.
                 </span>
             </div>
+            <!-- <div *ngIf="selectedAuthors.length === 0">
+                    <select-authors formControlName="authors"></select-authors>
+                    <span class="status-message error-message" *ngIf="courseGroup.controls.course.controls.authors.dirty && courseGroup.controls.course.controls.authors.errors">
+                        At least one author needs to be selected.
+                    </span>
+                </div> -->
             <div class="buttons-block">
                 <button class="btn" [disabled]="courseGroup.invalid" (click)="updateCourse();">Update</button>
                 <button class="btn" (click)="cancel();">Cancel</button>
@@ -41,5 +47,7 @@
         </fieldset>
     </form>
 
-    <!-- {{ currentCourse.title }} -->
+    <h4>Form value</h4>
+    <pre>{{courseGroup.value | json}}</pre>
+    <pre>Is myForm valid?: <br>{{courseGroup.valid | json}}</pre>
 </div>
