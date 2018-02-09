@@ -5,6 +5,8 @@ import { Router } from '@angular/router'
 import { UserActions } from './../../../../actions/userActions';
 import { AppState } from './../../../../reducers/';
 import { Store } from '@ngrx/store';
+import { IUser } from './../../../../interfaces/user';
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -17,7 +19,7 @@ export class UserLoginComponent {
 
   @ViewChild('form') public userForm: NgForm;
   public wrongCreds: Boolean = false;
-
+  private user: Observable<IUser>;
   
 
   constructor(
@@ -25,6 +27,7 @@ export class UserLoginComponent {
     private userActions: UserActions,
     private _authService: AuthService, 
     private router: Router) {
+      this.user = store.select('user');
   }
 
   login (form) {
@@ -33,7 +36,7 @@ export class UserLoginComponent {
       password: form.value.password, 
       token: ""
     };
-    this.store.dispatch(this.userActions.login(user))
+    this.store.dispatch(this.userActions.login(user));
       // this._authService.login(form.value.username, form.value.password);
       // this.wrongCreds = !this.isAuthenticated();
       // if (this.isAuthenticated) {

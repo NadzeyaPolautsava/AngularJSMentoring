@@ -3,7 +3,6 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { ActionWithPayload } from './../interfaces/actionWithPayload'; 
 
-import { AppState } from './../reducers';
 import { UserActions } from './../actions/userActions';
 import { AuthService } from './../core/services/auth.service';
 import { IUser } from './../interfaces/user';

@@ -6,7 +6,7 @@ import { LoginPageComponent } from './loginPage/loginPage';
 import { UserLoginComponent } from './loginPage/components/login';
 import { UserEffects } from './../effects/user.effect'
 import {EffectsModule} from '@ngrx/effects';
-import { userReducer }  from './../reducers/auth.reducer'
+import reducers  from './../reducers'
 import { UserActions } from './../actions/userActions';
 
 
@@ -14,8 +14,10 @@ import { UserActions } from './../actions/userActions';
   imports: [ 
       CommonModule, 
       FormsModule, 
-      StoreModule.forRoot(userReducer),
-      EffectsModule.run(UserEffects)
+      StoreModule.forRoot(reducers),
+      // StoreModule.forRoot({ counter: componentReducer }),
+
+      // EffectsModule.run(UserEffects)
 
   ],
   declarations: [
