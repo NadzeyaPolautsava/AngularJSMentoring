@@ -2,6 +2,9 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core'
 import { AuthService } from './../../../../core/services/auth.service';
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router'
+import { UserActions } from './../../../../actions/userActions';
+import { AppState } from './../../../../reducers';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -17,16 +20,26 @@ export class UserLoginComponent {
 
   
 
-  constructor(private _authService: AuthService, private router: Router) {
+  constructor(
+    private store: Store<AppState>,
+    private userActions: UserActions,
+    private _authService: AuthService, 
+    private router: Router) {
   }
 
   login (form) {
-      this._authService.login(form.value.username, form.value.password);
-      this.wrongCreds = !this.isAuthenticated();
-      if (this.isAuthenticated) {
-        console.log('aaaaa');
-        this.router.navigateByUrl('/courses');
-      }   
+    let user = {
+      username: form.value.username, 
+      password: form.value.password, 
+      token: ""
+    };
+    this.store.dispatch(this.userActions.login(user))
+      // this._authService.login(form.value.username, form.value.password);
+      // this.wrongCreds = !this.isAuthenticated();
+      // if (this.isAuthenticated) {
+      //   console.log('aaaaa');
+      //   this.router.navigateByUrl('/courses');
+      // }   
   }
 
   isAuthenticated(): boolean {
