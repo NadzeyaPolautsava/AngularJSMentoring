@@ -3,7 +3,7 @@ import { AuthService } from './../../../../core/services/auth.service';
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router'
 import { UserActions } from './../../../../actions/userActions';
-import { AppState } from './../../../../reducers';
+import { AppState } from './../../../../reducers/';
 import { Store } from '@ngrx/store';
 
 

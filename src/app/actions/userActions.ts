@@ -5,7 +5,7 @@ import { ActionWithPayload } from './../interfaces/actionWithPayload';
 
 @Injectable()
 export class UserActions {
-    static readonly LOGIN = '[IUser] LOGIN';
+    static readonly LOGIN = 'LOGIN';
     login(user: IUser): ActionWithPayload<IUser> {
         return {
             type: UserActions.LOGIN, 
@@ -13,7 +13,7 @@ export class UserActions {
         };
     }
 
-    static LOGIN_SUCCESS = '[IUser] Login Success';
+    static LOGIN_SUCCESS = 'LOGIN_SUCCESS';
     loginSuccess(user: IUser): ActionWithPayload<IUser> {
         return {
             type: UserActions.LOGIN_SUCCESS,
@@ -21,7 +21,7 @@ export class UserActions {
         };
     }
 
-    static readonly LOGOUT = '[IUser] LOGOUT';
+    static readonly LOGOUT = 'LOGOUT';
     logout(): ActionWithPayload<IUser> {
         return {
             type: UserActions.LOGOUT
