@@ -36,13 +36,19 @@ export class UserLoginComponent {
       password: form.value.password, 
       token: ""
     };
-    this.store.dispatch(this.userActions.login(user));
-      // this._authService.login(form.value.username, form.value.password);
-      // this.wrongCreds = !this.isAuthenticated();
-      // if (this.isAuthenticated) {
-      //   console.log('aaaaa');
-      //   this.router.navigateByUrl('/courses');
-      // }   
+
+    this._authService.login(form.value.username, form.value.password)
+      .subscribe((json: Object) => {
+          var ar = <IUser[]> json;
+          if (ar.length > 0) {
+              this._authService.setUser(ar[0]);
+              this.router.navigateByUrl('/courses');
+              this.store.dispatch(this.userActions.login(user));
+              
+          } else {
+            this.wrongCreds = true;
+          }
+      });
   }
 
   isAuthenticated(): boolean {

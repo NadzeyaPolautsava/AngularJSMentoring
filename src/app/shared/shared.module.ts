@@ -1,5 +1,6 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 
 import { LogoComponent } from './components/header/logo';
 import { MenuComponent } from './components/header/menu';
@@ -12,9 +13,14 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { TitlePipe } from './pipes/title.pipe'; 
 import { Title } from '@angular/platform-browser/src/browser/title';
 
+import reducers  from './../reducers'
+
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [ 
+    CommonModule, 
+    StoreModule.forRoot(reducers),
+  ],
   declarations: [ 
     LogoComponent, 
     MenuComponent, 

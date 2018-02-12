@@ -75,6 +75,10 @@ export class AuthService implements OnDestroy {
         return this.subject;
     }
 
+    public setUser(u: IUser) {
+        this.currentUser = u;
+    }
+
     ngOnDestroy() {
         this.alive = false;
     }
