@@ -6,7 +6,7 @@ import { UserActions } from './../../../../actions/userActions';
 import { AppState } from './../../../../reducers/';
 import { Store } from '@ngrx/store';
 import { IUser } from './../../../../interfaces/user';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 
 @Component({

@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { LoginPageComponent } from './loginPage/loginPage';
 import { UserLoginComponent } from './loginPage/components/login';
 import { UserEffects } from './../effects/user.effect'
-import {EffectsModule} from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
 import reducers  from './../reducers'
 import { UserActions } from './../actions/userActions';
 

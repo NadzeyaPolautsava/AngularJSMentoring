@@ -5,7 +5,8 @@ import { UserActions } from './../actions/userActions';
 import * as _ from 'lodash';
 import { ActionReducer, Action } from '@ngrx/store';
 
-
+export type Actions =
+    | ActionWithPayload<IUser>
 // export type UserState = IUser;
 const initialState: IUser = { username: "", password: "", token: ""};
 

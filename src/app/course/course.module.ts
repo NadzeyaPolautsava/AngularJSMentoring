@@ -20,10 +20,23 @@ import { CourseService } from './../core/services/course.service';
 import { HighlightBorderDirective } from './directives/highlightBorder.directive'
 
 import { SharedModule } from './../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { CourseActions } from './../actions/courseActions';
+import reducers  from './../reducers'
+import { CourseEffects } from './../effects/course.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
-  imports: [ CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule ],
+  imports: [ 
+    CommonModule, 
+    SharedModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    RouterModule,
+    StoreModule.forRoot(reducers), 
+    // EffectsModule.run(CourseEffects)
+  ],
   declarations: [
         CourseComponent, 
         CourseListComponent, 
@@ -45,7 +58,8 @@ import { SharedModule } from './../shared/shared.module';
     EditCoursePageComponent
   ], 
   providers: [
-    CourseService
+    CourseService, 
+    CourseActions, 
   ]
 })
 export class CourseModule { }

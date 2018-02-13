@@ -6,6 +6,9 @@ import { Router } from '@angular/router'
 import { CourseService } from './../../core/services/course.service';
 import { CourseAuthorService } from './../../core/services/courseAuthor.service';
 import { AppConfig } from './../../config/appConfig';
+import { AppState } from './../../reducers/';
+import { Store } from '@ngrx/store';
+import { CourseActions } from './../../actions/courseActions';
 
 
 @Component({
@@ -25,7 +28,10 @@ export class AddCoursePageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private courseService: CourseService,
-              private courseAuthorService: CourseAuthorService) {
+              private courseAuthorService: CourseAuthorService, 
+              private store: Store<AppState>, 
+              private courseActions: CourseActions
+            ) {
   }
 
   ngOnInit() {
@@ -55,8 +61,9 @@ export class AddCoursePageComponent implements OnInit {
           this.courseAuthorService.save(x.id, authorId);
           // console.log('Authors Id' + authorId);
         }
+        this.store.dispatch(this.courseActions.addCourseSuccess(x));
         console.log('Authors ' + authors);
-
+        this.store.dispatch(this.courseActions.addCourseSuccess(x));
       })
     this.router.navigateByUrl('/courses');
   }

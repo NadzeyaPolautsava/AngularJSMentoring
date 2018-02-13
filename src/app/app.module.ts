@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
-
+import { EffectsModule } from '@ngrx/effects';
 import { LoginModule } from './login/login.module';
 import { CourseModule } from './course/course.module';
 import { SharedModule } from './shared/shared.module';
@@ -74,7 +74,8 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
-    })
+    }), 
+    // EffectsModule.forRoot([]),
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
