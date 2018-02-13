@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
 import { AppConfig } from './../../config/appConfig';
 import * as lodash from 'lodash'; 
 import { IAuthor } from './../../interfaces/author';
+import { AppState } from './../../reducers/';
+import { Store } from '@ngrx/store';
+import { CourseActions } from './../../actions/courseActions';
 
 @Component({
   selector: 'edit-course',
@@ -29,7 +32,10 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
                 private courseService: CourseService, 
                 private courseAuthorService: CourseAuthorService,
                 private authorService: AuthorService, 
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder, 
+                private store: Store<AppState>, 
+                private courseActions: CourseActions
+            ) {
 
     }
 
@@ -98,7 +104,7 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
         this.courseService.updateItem(c)
             .takeWhile(() => this.alive)
             .subscribe(x => {
-                console.log('Course Updated');
+                this.store.dispatch(this.courseActions.updateCourseSuccess(c));
             });
         if (this.courseAuthors) {
             for (let i = 0; i < this.courseAuthors.length; i++) {
@@ -108,7 +114,6 @@ export class EditCoursePageComponent implements OnInit, OnDestroy {
         
         
         let authors = this.courseGroup.get('course').get('authors').value;
-        alert('AUTHORS: ' + authors.length);
         for (let i = 0; i < authors.length; i++) {
             this.courseAuthorService.save(this.courseId, authors[i].id);
             

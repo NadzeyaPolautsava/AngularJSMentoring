@@ -21,6 +21,18 @@ export const courseReducer: ActionReducer<ICourse[]> = (state = initialState, ac
                 return course.id !== action.payload[0].id;
             });
         }
+        case CourseActions.UPDATE_SUCCESS: {
+            state.forEach(element => {
+                if (element.id === action.payload[0].id) {
+                    element.title = action.payload[0].title;
+                    element.description = action.payload[0].description;
+                    element.date = action.payload[0].date;
+                    element.topRated = action.payload[0].topRated;
+                    element.duration = action.payload[0].duration;
+                    // break;
+                }
+            });
+        }
         default: {
             return state;
         }
