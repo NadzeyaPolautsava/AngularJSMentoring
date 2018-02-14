@@ -2,12 +2,12 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router'
 import { CourseService } from './../../../../core/services/course.service';
-import * as lodash from 'lodash'; 
+import * as lodash from 'lodash';
 
 @Component({
   selector: 'app-menu',
   providers: [],
-  templateUrl: './menu.html', 
+  templateUrl: './menu.html',
   styleUrls: []
 })
 export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -25,12 +25,12 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
         if (data['id']) {
           let courseId = data['id'];
           this.courseService.getItemById(courseId)
-          .takeWhile(() => this.alive)
-          .subscribe(
+            .takeWhile(() => this.alive)
+            .subscribe(
             x => {
               this.courseTitle = lodash.head(x).title;
             }
-          );
+            );
         } else {
           this.courseTitle = '';
         }
@@ -47,15 +47,17 @@ export class MenuComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.router.routerState.snapshot.url.indexOf('courses/') >= 0) {
           let courseId = Number(this.router.routerState.snapshot.url.slice(this.router.routerState.snapshot.url.indexOf('courses/') + 8));
           console.log('aaa');
-          this.courseService.getItemById(courseId)
-          .takeWhile(() => this.alive)
-          .subscribe(
+          if (courseId) {
+            this.courseService.getItemById(courseId)
+              .takeWhile(() => this.alive)
+              .subscribe(
               x => {
                 if (x) {
                   this.courseTitle = lodash.head(x).title;
                 }
               }
-          );
+              );
+          }
         }
       });
   }

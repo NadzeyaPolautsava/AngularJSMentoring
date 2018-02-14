@@ -18,14 +18,17 @@ export class CourseAuthorService implements OnDestroy {
     save(courseId: number, authorId: number) {
         let requestOptions = new RequestOptions();
         let request: Request;
-        let urlParams: URLSearchParams = new URLSearchParams();
+        let headers = new Headers({ 'Content-Type': 'application/json' });
 
         requestOptions.url = this.baseUrl + '/courseAuthors';
         requestOptions.method = RequestMethod.Post;
-        urlParams.append('courseId', courseId.toString());
-        urlParams.append('authorId', authorId.toString());
-        
-        requestOptions.search = urlParams;
+
+        let courseAuthor = {
+            courseId: courseId, 
+            authorId: authorId
+        }
+        requestOptions.headers = headers;
+        requestOptions.body = JSON.stringify(courseAuthor);
 
         request = new Request(requestOptions);
         let subscription = this.http.request(request)    
@@ -34,6 +37,54 @@ export class CourseAuthorService implements OnDestroy {
             .subscribe((json: Object) => {
             });
         
+    }
+
+    remove(recordId: number) {
+        let requestOptions = new RequestOptions();
+        let request: Request;
+
+        requestOptions.url = this.baseUrl + '/courseAuthors/' + recordId.toString();
+        requestOptions.method = RequestMethod.Delete;
+
+        request = new Request(requestOptions);
+        let subscription = this.http.request(request)    
+            .map((res: Response) => res.json())
+            .takeWhile(() => this.alive)
+            .subscribe((json: Object) => {
+            });
+    }
+
+    removeAll(courseId: number) {
+        let requestOptions = new RequestOptions();
+        let request: Request;
+        let searchParams: URLSearchParams = new URLSearchParams();
+        searchParams.append('courseId', courseId.toString());
+        
+        requestOptions.url = this.baseUrl + '/courseAuthors';
+        requestOptions.method = RequestMethod.Delete;
+        requestOptions.search = searchParams;
+
+        request = new Request(requestOptions);
+        let subscription = this.http.request(request)    
+            .map((res: Response) => res.json())
+            .takeWhile(() => this.alive)
+            .subscribe((json: Object) => {
+            });
+    }
+
+    fetchForCourse(courseId: number) {
+        let requestOptions = new RequestOptions();
+        let request: Request;
+        let searchParams: URLSearchParams = new URLSearchParams();
+
+        searchParams.append('courseId', courseId.toString());
+        requestOptions.url = this.baseUrl + '/courseAuthors';
+        requestOptions.method = RequestMethod.Get;
+        requestOptions.search = searchParams;
+
+        request = new Request(requestOptions);
+        return this.http.request(request)
+            .map((res: Response) => res.json());
     }
 
     ngOnDestroy() {

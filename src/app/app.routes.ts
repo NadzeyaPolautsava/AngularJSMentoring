@@ -27,7 +27,7 @@ export const ROUTES: Routes = [
     { 
         path: 'courses/new',
         component:  AddCoursePageComponent,
-        canActivate: [CanActivateGuard], 
+        // canActivate: [CanActivateGuard], 
         data: {
             breadcrumb: "New Course"
         } 
@@ -35,7 +35,7 @@ export const ROUTES: Routes = [
     { 
         path: 'courses/:id',
         component:  EditCoursePageComponent,
-        canActivate: [CanActivateGuard] 
+        // canActivate: [CanActivateGuard] 
     }, 
  
     { 

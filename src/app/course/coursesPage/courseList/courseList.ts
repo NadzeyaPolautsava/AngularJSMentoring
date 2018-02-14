@@ -7,6 +7,11 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/takeWhile';
 import { Subscription } from 'rxjs/Subscription';
 import { PagerService } from '../../../core/services/pager.service';
+import { CourseActions } from './../../../actions/courseActions';
+import { AppState } from './../../../reducers/';
+import { Store } from '@ngrx/store';
+import { Observable } from "rxjs";
+
 
 @Component({
   selector: 'course-list',
@@ -16,14 +21,20 @@ import { PagerService } from '../../../core/services/pager.service';
 })
 export class CourseListComponent implements OnInit, OnDestroy {
 
-  public courses: ICourse[] = [];
+  // public courses: Observable<ICourse[]>;
+  public courses: ICourse[];
   pager: any = {};
   pagedItems: ICourse[] = [];
   private coursesTotalCount: Number;
   private searchTitle: string;
   private alive: boolean = true;
 
-  constructor(private _courseService: CourseService, private pagerService: PagerService) {
+  constructor(
+    private store: Store<AppState>,
+    private _courseService: CourseService, 
+    private pagerService: PagerService, 
+    private courseActions: CourseActions
+  ) {
   }
 
   ngOnInit() {
@@ -36,7 +47,10 @@ export class CourseListComponent implements OnInit, OnDestroy {
       e => console.log(e),
       () => {
         console.log('total count received ' + this.coursesTotalCount);
+        this.store.select('courses')
+          .subscribe(x => this.courses = x);
         this.fetchCourses(1);
+        // this.store.dispatch(this.courseActions.loadCourses());
       }
       );
   }
@@ -44,10 +58,21 @@ export class CourseListComponent implements OnInit, OnDestroy {
   deleteItem($event) {
     let deleteSubscription = this._courseService.removeItem($event.value)
       .subscribe(
-      x => console.log(x),
+      x => {
+        let c: ICourse = {
+          id: $event.value, 
+          duration: 0, 
+          description: "", 
+          title: "", 
+          topRated: false, 
+          date: null,
+        };
+        this.store.dispatch(this.courseActions.deleteCourseSuccess(c));
+      },
       e => console.log(e),
       () => {
         this.fetchCourses(this.pager.currentPage); 
+
       });
   }
 
@@ -72,8 +97,8 @@ export class CourseListComponent implements OnInit, OnDestroy {
       .subscribe(
       x => {
         this.courses = x;
-        console.log('Length: ' + x.length);
         this.setPage(page);
+        this.store.dispatch(this.courseActions.loadCoursesSuccess(this.courses));
       },
         e => console.log(e),
        () => console.log('data received')
@@ -87,6 +112,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
           this.courses = x;
           console.log('Length: ' + x.length);
           this.setPage(page);
+          this.store.dispatch(this.courseActions.loadCoursesSuccess(this.courses));
         },
           e => console.log(e),
          () => console.log('data received')

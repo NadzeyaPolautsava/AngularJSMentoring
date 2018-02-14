@@ -28,6 +28,9 @@ export class SelectAuthorsComponent implements ControlValueAccessor, OnInit, Val
   @Input('authors')
   _authors: Array<IAuthor> = [];
 
+  @Input('selectedAuthors')
+  _selectedAuthors: Array<IAuthor> = [];
+
   items: Observable<IAuthor[]>;
   propagateChange = (_: any) => {};
 
@@ -37,6 +40,7 @@ export class SelectAuthorsComponent implements ControlValueAccessor, OnInit, Val
 
   ngOnInit() {
     this.items = this.authorService.getList();
+    console.log('SELECT AUTHORS: ' + this._selectedAuthors);
   }
 
   writeValue(value) {
@@ -51,6 +55,11 @@ export class SelectAuthorsComponent implements ControlValueAccessor, OnInit, Val
 
   set authors(val) {
     // this._authors = val;
+  }
+
+  isAuthorSelected(authorId: number): boolean {
+    console.log('isAuthorSelected: ' + authorId + ' ' + (this._selectedAuthors.filter(e => e.id === authorId).length > 0));
+    return this._selectedAuthors.filter(e => e.id === authorId).length > 0
   }
 
   registerOnChange(fn) {

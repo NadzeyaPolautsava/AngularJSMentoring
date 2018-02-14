@@ -2,7 +2,8 @@
 <div class="form-check" *ngFor="let item of items | async">
 
     <div class="form-check-label" >
-        <input type="checkbox" [(ngModel)]="authors" class="form-check-input" [value]="item" (change)="setAuthors($event, item)">
-        {{item.firstName}} {{item.lastName}}
+        <input type="checkbox"  class="form-check-input" [value]="item" (change)="setAuthors($event, item)"
+        [checked]="isAuthorSelected(item.id)">
+        {{item.firstName}} {{item.lastName}} {{item.id}}
     </div>
 </div>
