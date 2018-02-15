@@ -13,7 +13,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { TitlePipe } from './pipes/title.pipe'; 
 import { Title } from '@angular/platform-browser/src/browser/title';
 
-import reducers  from './../reducers'
+import reducers  from './../reducers';
 
 
 @NgModule({
