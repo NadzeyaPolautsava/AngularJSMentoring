@@ -14,6 +14,7 @@ import { AppState } from './../../reducers/';
 import { Store } from '@ngrx/store';
 import { CourseActions } from './../../actions/courseActions';
 
+
 @Component({
   selector: 'edit-course',
   templateUrl: './editCoursePage.html', 

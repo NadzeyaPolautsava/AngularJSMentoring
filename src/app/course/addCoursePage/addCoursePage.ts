@@ -25,14 +25,14 @@ export class AddCoursePageComponent implements OnInit {
   public title: string = '';
   public courseGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private courseService: CourseService,
-              private courseAuthorService: CourseAuthorService, 
-              private store: Store<AppState>, 
-              private courseActions: CourseActions
-            ) {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private courseService: CourseService,
+    private courseAuthorService: CourseAuthorService, 
+    private store: Store<AppState>, 
+    private courseActions: CourseActions
+  ) {}
 
   ngOnInit() {
     this.courseGroup = this.formBuilder.group({
